@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { workItems } = useSiteContent()
+const { workItems, sideProjects } = useSiteContent()
 
 useSeoMeta({
   title: 'Work',
@@ -18,6 +18,15 @@ useSeoMeta({
           <NuxtLink :to="`/work/${item.slug}`">{{ item.name }}</NuxtLink>
         </h2>
         <p><strong>{{ item.role }}</strong></p>
+        <p>{{ item.summary }}</p>
+      </li>
+    </ul>
+
+    <h2>Side Projects</h2>
+    <ul class="grid">
+      <li v-for="item in sideProjects" :key="item.name" class="card">
+        <h3>{{ item.name }}</h3>
+        <p><strong>{{ item.date }}</strong></p>
         <p>{{ item.summary }}</p>
       </li>
     </ul>

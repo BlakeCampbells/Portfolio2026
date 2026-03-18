@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { about } = useSiteContent()
+const { about, profile } = useSiteContent()
 
 useSeoMeta({
   title: 'About',
@@ -16,6 +16,20 @@ useSeoMeta({
     <ul>
       <li v-for="fact in about.quickFacts" :key="fact">{{ fact }}</li>
     </ul>
+
+    <h2>Setup</h2>
+    <ul>
+      <li v-for="item in about.setup" :key="item">{{ item }}</li>
+    </ul>
+
+    <h2>Profile</h2>
+    <p>{{ profile.title }} at {{ profile.company }}</p>
+    <p>{{ profile.location }}</p>
+    <p>
+      <a :href="profile.linkedin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      · {{ profile.followers }} followers · {{ profile.connections }} connections
+    </p>
+
     <nav>
       <NuxtLink to="/">Home</NuxtLink>
       <NuxtLink to="/work">Work</NuxtLink>

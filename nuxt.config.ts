@@ -41,7 +41,24 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: ['/', '/sitemap.xml', '/robots.txt']
+      routes: [
+        '/',
+        '/about',
+        '/work',
+        '/thoughts',
+        '/work/apple',
+        '/work/propelicy',
+        '/work/benefitmany',
+        '/work/manycomm',
+        '/thoughts/readme-for-a-productive-2021',
+        '/thoughts/better-readme-in-5-minutes-snack-pack-1',
+        '/thoughts/questions-make-you-a-better-developer-snack-pack-2',
+        '/thoughts/overlooked-design-blank-states-snack-pack-3',
+        '/thoughts/are-default-params-in-javascript-bad-snack-pack-4',
+        '/thoughts/tracing-vs-transformation-for-developers',
+        '/sitemap.xml',
+        '/robots.txt'
+      ]
     }
   }
 })

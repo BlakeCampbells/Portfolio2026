@@ -57,8 +57,10 @@ const { workItems: projects, thoughts } = useSiteContent()
     <section class="tile projects">
       <h2>Selected Work</h2>
       <ul>
-        <li v-for="project in projects" :key="project.name">
-          <strong>{{ project.name }}</strong>
+        <li v-for="project in projects" :key="project.slug">
+          <strong>
+            <NuxtLink :to="`/work/${project.slug}`">{{ project.name }}</NuxtLink>
+          </strong>
           <span>{{ project.summary }}</span>
         </li>
       </ul>
@@ -69,14 +71,16 @@ const { workItems: projects, thoughts } = useSiteContent()
     <section class="tile thoughts">
       <h2>Thoughts</h2>
       <ul>
-        <li v-for="post in thoughts" :key="post">{{ post }}</li>
+        <li v-for="post in thoughts" :key="post.slug">
+          <NuxtLink :to="`/thoughts/${post.slug}`">{{ post.title }}</NuxtLink>
+        </li>
       </ul>
     </section>
 
     <section class="tile links">
-      <a href="https://blakecampbell.com/about">About</a>
-      <a href="https://blakecampbell.com/work">Work</a>
-      <a href="https://blakecampbell.com/thoughts">Thoughts</a>
+      <NuxtLink to="/about">About</NuxtLink>
+      <NuxtLink to="/work">Work</NuxtLink>
+      <NuxtLink to="/thoughts">Thoughts</NuxtLink>
       <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </section>
   </main>
