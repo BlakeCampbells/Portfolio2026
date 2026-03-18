@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { profile, workItems: projects, thoughts } = useSiteContent()
+
 useSeoMeta({
   title: 'Portfolio',
   description:
@@ -26,8 +28,6 @@ useHead({
     }
   ]
 })
-
-const { workItems: projects, thoughts } = useSiteContent()
 </script>
 
 <template>
@@ -35,10 +35,7 @@ const { workItems: projects, thoughts } = useSiteContent()
     <section class="tile intro">
       <p class="eyebrow">Blake Campbell</p>
       <h1>Senior Full Stack Engineer.<br />Frontend focus.</h1>
-      <p>
-        VueJS professional. NuxtJS experimenter. Coffee drinker. Amateur gardener
-        and chef.
-      </p>
+      <p>VueJS professional. NuxtJS experimenter. Coffee drinker. Amateur gardener and chef.</p>
     </section>
 
     <section class="tile red" aria-hidden="true" />
@@ -58,9 +55,7 @@ const { workItems: projects, thoughts } = useSiteContent()
       <h2>Selected Work</h2>
       <ul>
         <li v-for="project in projects" :key="project.slug">
-          <strong>
-            <NuxtLink :to="`/work/${project.slug}`">{{ project.name }}</NuxtLink>
-          </strong>
+          <strong><NuxtLink :to="`/work/${project.slug}`">{{ project.name }}</NuxtLink></strong>
           <span>{{ project.summary }}</span>
         </li>
       </ul>
@@ -81,7 +76,7 @@ const { workItems: projects, thoughts } = useSiteContent()
       <NuxtLink to="/about">About</NuxtLink>
       <NuxtLink to="/work">Work</NuxtLink>
       <NuxtLink to="/thoughts">Thoughts</NuxtLink>
-      <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a :href="profile.linkedin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </section>
   </main>
 </template>
@@ -111,20 +106,9 @@ const { workItems: projects, thoughts } = useSiteContent()
   justify-content: flex-end;
 }
 
-.about {
-  grid-column: 2 / 4;
-  grid-row: 2 / 3;
-}
-
-.projects {
-  grid-column: 1 / 3;
-  grid-row: 3 / 4;
-}
-
-.thoughts {
-  grid-column: 3 / 4;
-  grid-row: 3 / 4;
-}
+.about { grid-column: 2 / 4; grid-row: 2 / 3; }
+.projects { grid-column: 1 / 3; grid-row: 3 / 4; }
+.thoughts { grid-column: 3 / 4; grid-row: 3 / 4; }
 
 .links {
   grid-column: 1 / 4;
@@ -137,80 +121,21 @@ const { workItems: projects, thoughts } = useSiteContent()
   flex-wrap: wrap;
 }
 
-h2 {
-  margin: 0 0 0.65rem;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-ul {
-  margin: 0;
-  padding-left: 1rem;
-}
-
-.projects ul,
-.thoughts ul {
-  display: grid;
-  gap: 0.5rem;
-}
-
-.projects li {
-  display: grid;
-  gap: 0.1rem;
-}
-
-.projects span {
-  font-size: 0.92rem;
-}
-
-.red {
-  background: #d72d2d;
-}
-
-.blue {
-  background: #1f54c7;
-}
-
-.yellow {
-  background: #f3c623;
-}
-
-.eyebrow {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin: 0;
-}
-
-h1 {
-  margin: 0.5rem 0 0.75rem;
-  font-size: clamp(1.7rem, 4.8vw, 3.8rem);
-  line-height: 0.95;
-}
-
-p {
-  margin: 0;
-}
-
-.small {
-  opacity: 0.75;
-  margin-top: 0.5rem;
-}
+h2 { margin: 0 0 0.65rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.04em; }
+ul { margin: 0; padding-left: 1rem; }
+.projects ul, .thoughts ul { display: grid; gap: 0.5rem; }
+.projects li { display: grid; gap: 0.1rem; }
+.projects span { font-size: 0.92rem; }
+.red { background: #d72d2d; }
+.blue { background: #1f54c7; }
+.yellow { background: #f3c623; }
+.eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; margin: 0; }
+h1 { margin: 0.5rem 0 0.75rem; font-size: clamp(1.7rem, 4.8vw, 3.8rem); line-height: 0.95; }
+p { margin: 0; }
+.small { opacity: 0.75; margin-top: 0.5rem; }
 
 @media (max-width: 900px) {
-  .mondrian {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-
-  .intro,
-  .about,
-  .projects,
-  .thoughts,
-  .links {
-    grid-column: auto;
-    grid-row: auto;
-  }
+  .mondrian { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .intro, .about, .projects, .thoughts, .links { grid-column: auto; grid-row: auto; }
 }
 </style>
