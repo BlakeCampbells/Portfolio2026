@@ -87,7 +87,7 @@ useHead({
       <h2>Everything else</h2>
       <ul>
         <li v-for="post in thoughts" :key="post.slug">
-          <NuxtLink :to="`/thoughts/${post.slug}`" class="item-link">
+          <NuxtLink :to="`/uses/${post.slug}`" class="item-link">
             {{ post.title }}
           </NuxtLink>
         </li>

@@ -52,6 +52,12 @@ export const about = {
     'DIY landscaping projects, including building a 50ft retaining wall',
     'Free time is always busy, but fun'
   ],
+  everydayUse: [
+    'Notion for planning and docs',
+    'GitHub for version control and collaboration',
+    'Spotify in the background while coding',
+    'Calendar + reminders to keep delivery on track'
+  ],
   setup: [
     'MacBook Pro',
     'Dual LG Ultrawide monitors',

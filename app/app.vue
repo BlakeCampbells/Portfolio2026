@@ -35,7 +35,7 @@ onBeforeUnmount(() => {
         <NuxtLink to="/">Home</NuxtLink>
         <NuxtLink to="/about">About</NuxtLink>
         <NuxtLink to="/work">Work</NuxtLink>
-        <NuxtLink to="/thoughts">Everything else</NuxtLink>
+        <NuxtLink to="/uses">Everything else</NuxtLink>
         <a :href="profile.linkedin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a :href="profile.github" target="_blank" rel="noopener noreferrer">GitHub</a>
       </nav>
