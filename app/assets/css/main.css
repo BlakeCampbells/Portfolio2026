@@ -22,3 +22,69 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #111;
+  display: flex;
+  align-items: center;
+  padding: 0 12px 12px;
+}
+
+.top-nav-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 700;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.top-nav-inner a {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 0.8rem;
+  border: 5px solid #111;
+  background: #f7f4ef;
+  transition: transform 120ms ease, background-color 120ms ease, color 120ms ease;
+}
+
+.top-nav-inner a[data-hover-color='red']:hover {
+  background: var(--red);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.top-nav-inner a[data-hover-color='blue']:hover {
+  background: var(--blue);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.top-nav-inner a[data-hover-color='yellow']:hover {
+  background: var(--yellow);
+  color: #111;
+  transform: translateY(-1px);
+}
+
+.top-nav-inner a.router-link-active {
+  background: #d72d2d;
+  color: #fff;
+}
+
+.top-nav-inner a.router-link-active:hover {
+  background: #d72d2d;
+  color: #fff;
+  transform: none;
+}
+
+main {
+  padding-top: 0;
+}

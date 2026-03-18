@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const route = useRoute()
-const { profile, thoughts } = useSiteContent()
+const { thoughts } = useSiteContent()
 
 const post = computed(() => thoughts.find((t) => t.slug === route.params.slug))
 
@@ -29,13 +29,6 @@ useSeoMeta({
         <p v-for="section in post.sections" :key="section">{{ section }}</p>
       </div>
     </section>
-
-    <section class="tile links">
-      <NuxtLink to="/">Home</NuxtLink>
-      <NuxtLink to="/thoughts">Back to thoughts</NuxtLink>
-      <NuxtLink to="/work">Work</NuxtLink>
-      <a :href="profile.linkedin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    </section>
   </main>
 </template>
 
@@ -57,7 +50,6 @@ useSeoMeta({
 .summary { font-weight: 600; }
 .content { display: grid; gap: .85rem; }
 .content p { margin: 0; line-height: 1.6; }
-.links { grid-column: 1 / -1; display: flex; gap: 1rem; flex-wrap: wrap; font-weight: 700; }
 
 h1 { margin-top: 0; }
 

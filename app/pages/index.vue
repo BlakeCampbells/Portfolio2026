@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { profile, workItems: projects, thoughts } = useSiteContent()
+const { about, coreWorkItems, sideProjects, thoughts } = useSiteContent()
 
 useSeoMeta({
   title: 'Portfolio',
@@ -33,50 +33,65 @@ useHead({
 <template>
   <main class="mondrian">
     <section class="tile intro">
+      <img :src="about.headshot" alt="Headshot of Blake Campbell" class="headshot" />
       <p class="eyebrow">Blake Campbell</p>
-      <h1>Senior Full Stack Engineer.<br />Frontend focus.</h1>
-      <p>VueJS professional. NuxtJS experimenter. Coffee drinker. Amateur gardener and chef.</p>
+      <h1>Senior Engineer<br />Frontend focus</h1>
+      <p>
+        Senior Engineer focused on performance, reliability, and delivering high quality
+        user experiences.
+      </p>
     </section>
 
     <section class="tile red" aria-hidden="true" />
 
     <section class="tile about">
-      <h2>About</h2>
-      <p>
-        I build clean, practical products with Vue/Nuxt, strong testing habits,
-        and systems that help teams move faster.
-      </p>
-      <p class="small">8+ years JavaScript • Cypress E2E • Rails API integration</p>
+      <h2>Proof Points</h2>
+      <ul class="proof-points">
+        <li>Shipped work across Apple + Argonne + startup environments</li>
+        <li>10+ years building production software applications</li>
+        <li>Open-source to help the developer community</li>
+      </ul>
     </section>
 
     <section class="tile blue" aria-hidden="true" />
 
-    <section class="tile projects">
-      <h2>Selected Work</h2>
+    <section class="tile work">
+      <h2>Work</h2>
       <ul>
-        <li v-for="project in projects" :key="project.slug">
-          <strong><NuxtLink :to="`/work/${project.slug}`">{{ project.name }}</NuxtLink></strong>
-          <span>{{ project.summary }}</span>
+        <li v-for="job in coreWorkItems" :key="job.slug">
+          <NuxtLink :to="`/work/${job.slug}`" class="item-link">
+            <strong>{{ job.name }}</strong>
+            <small class="years">{{ job.years }}</small>
+            <span>{{ job.role }}</span>
+          </NuxtLink>
         </li>
       </ul>
     </section>
 
     <section class="tile yellow" aria-hidden="true" />
 
-    <section class="tile thoughts">
-      <h2>Thoughts</h2>
+    <section class="tile projects">
+      <h2>Projects</h2>
       <ul>
-        <li v-for="post in thoughts" :key="post.slug">
-          <NuxtLink :to="`/thoughts/${post.slug}`">{{ post.title }}</NuxtLink>
+        <li v-for="project in sideProjects" :key="project.slug">
+          <NuxtLink :to="`/work/${project.slug}`" class="item-link">
+            <strong>{{ project.name }}</strong>
+            <small class="years">{{ project.years }}</small>
+            <span>{{ project.summary }}</span>
+          </NuxtLink>
         </li>
       </ul>
     </section>
 
-    <section class="tile links">
-      <NuxtLink to="/about">About</NuxtLink>
-      <NuxtLink to="/work">Work</NuxtLink>
-      <NuxtLink to="/thoughts">Thoughts</NuxtLink>
-      <a :href="profile.linkedin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <section class="tile thoughts">
+      <h2>Everything else</h2>
+      <ul>
+        <li v-for="post in thoughts" :key="post.slug">
+          <NuxtLink :to="`/thoughts/${post.slug}`" class="item-link">
+            {{ post.title }}
+          </NuxtLink>
+        </li>
+      </ul>
     </section>
   </main>
 </template>
@@ -103,39 +118,82 @@ useHead({
   grid-row: 1 / 3;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .about { grid-column: 2 / 4; grid-row: 2 / 3; }
-.projects { grid-column: 1 / 3; grid-row: 3 / 4; }
-.thoughts { grid-column: 3 / 4; grid-row: 3 / 4; }
+.work { grid-column: 1 / 2; grid-row: 3 / 5; }
+.projects { grid-column: 2 / 3; grid-row: 4 / 5; }
+.thoughts { grid-column: 3 / 4; grid-row: 3 / 5; }
 
-.links {
-  grid-column: 1 / 4;
-  grid-row: 4 / 5;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  flex-wrap: wrap;
+.work li:hover {
+  transform: translateY(-1px);
+  box-shadow: 4px 4px 0 #d72d2d, 7px 7px 0 #1f54c7;
+}
+
+.projects li:hover {
+  transform: translateY(-1px);
+  box-shadow: 4px 4px 0 #1f54c7, 7px 7px 0 #f3c623;
+}
+
+.thoughts li:hover {
+  transform: translateY(-1px);
+  box-shadow: 4px 4px 0 #f3c623, 7px 7px 0 #d72d2d;
 }
 
 h2 { margin: 0 0 0.65rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.04em; }
 ul { margin: 0; padding-left: 1rem; }
-.projects ul, .thoughts ul { display: grid; gap: 0.5rem; }
-.projects li { display: grid; gap: 0.1rem; }
-.projects span { font-size: 0.92rem; }
+.work ul, .projects ul, .thoughts ul { display: grid; gap: 0; list-style: none; padding-left: 0; }
+.work li, .projects li, .thoughts li {
+  display: block;
+  border: 3px solid transparent;
+  border-bottom: 2px solid #111;
+  background: #f7f4ef;
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+
+.work li:last-child,
+.projects li:last-child,
+.thoughts li:last-child {
+  border-bottom: 0;
+}
+
+.item-link {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.55rem 0.6rem;
+  color: inherit;
+}
+
+.item-link:hover,
+.item-link:hover * {
+  color: inherit;
+}
+
+.work span, .projects span { font-size: 0.92rem; }
+.proof-points { display: grid; gap: 0.55rem; }
+.proof-points li { line-height: 1.35; }
+.years { font-size: 0.78rem; opacity: 0.7; }
 .red { background: #d72d2d; }
 .blue { background: #1f54c7; }
 .yellow { background: #f3c623; }
-.eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; margin: 0; }
+.headshot {
+  width: 156px;
+  height: 156px;
+  object-fit: cover;
+  border: 4px solid #111;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+.eyebrow { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; margin: 0; }
 h1 { margin: 0.5rem 0 0.75rem; font-size: clamp(1.7rem, 4.8vw, 3.8rem); line-height: 0.95; }
 p { margin: 0; }
 .small { opacity: 0.75; margin-top: 0.5rem; }
 
 @media (max-width: 900px) {
   .mondrian { grid-template-columns: 1fr; grid-template-rows: auto; }
-  .intro, .about, .projects, .thoughts, .links { grid-column: auto; grid-row: auto; }
+  .intro, .about, .work, .projects, .thoughts { grid-column: auto; grid-row: auto; }
 }
 </style>

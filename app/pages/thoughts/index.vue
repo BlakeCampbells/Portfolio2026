@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const { profile, thoughts } = useSiteContent()
+const { thoughts } = useSiteContent()
 
 useSeoMeta({
-  title: 'Thoughts',
-  description: 'Writing on frontend development, UX, and developer growth.'
+  title: 'Everything else',
+  description: 'Notes, writing, setup details, and other useful extras.'
 })
 </script>
 
@@ -23,13 +23,6 @@ useSeoMeta({
           <p>{{ post.summary }}</p>
         </li>
       </ul>
-    </section>
-
-    <section class="tile links">
-      <NuxtLink to="/">Home</NuxtLink>
-      <NuxtLink to="/about">About</NuxtLink>
-      <NuxtLink to="/work">Work</NuxtLink>
-      <a :href="profile.linkedin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </section>
   </main>
 </template>
@@ -51,12 +44,14 @@ useSeoMeta({
 .list { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; }
 .item { border-left: 4px solid #111; padding-left: .75rem; }
 .item p { margin: .4rem 0 0; }
-.links { grid-column: 1 / -1; display: flex; gap: 1rem; flex-wrap: wrap; font-weight: 700; }
 
 h1 { margin-top: 0; }
 
 @media (max-width: 900px) {
   .mondrian-page { grid-template-columns: 1fr; }
   .intro,.span-2 { grid-column: auto; }
+}
+</style>
+column: auto; }
 }
 </style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { about, profile } = useSiteContent()
+const { about } = useSiteContent()
 
 useSeoMeta({
   title: 'About',
@@ -12,76 +12,96 @@ useSeoMeta({
 <template>
   <main class="mondrian-page">
     <section class="tile intro">
+      <img :src="about.headshot" alt="Headshot of Blake Campbell" class="headshot" />
       <h1>{{ about.headline }}</h1>
       <p class="lead">{{ about.bio }}</p>
+      <p class="location">Pittsburgh, PA</p>
     </section>
 
-    <section class="tile">
+    <section class="tile color red" aria-hidden="true" />
+
+    <section class="tile quick-facts">
       <h2>Quick Facts</h2>
       <ul>
         <li v-for="fact in about.quickFacts" :key="fact">{{ fact }}</li>
       </ul>
     </section>
 
-    <section class="tile color red" aria-hidden="true" />
+    <section class="tile color blue" aria-hidden="true" />
 
     <section class="tile">
-      <h2>Setup</h2>
+      <h2>How I Work</h2>
       <ul>
-        <li v-for="item in about.setup" :key="item">{{ item }}</li>
+        <li v-for="item in about.approach" :key="item">{{ item }}</li>
       </ul>
     </section>
 
-    <section class="tile">
-      <h2>Profile</h2>
-      <p>{{ profile.title }} at {{ profile.company }}</p>
-      <p>{{ profile.location }}</p>
-      <p>{{ profile.followers }} followers · {{ profile.connections }} connections</p>
-    </section>
+    <section class="tile color yellow" aria-hidden="true" />
 
-    <section class="tile links">
-      <NuxtLink to="/">Home</NuxtLink>
-      <NuxtLink to="/work">Work</NuxtLink>
-      <NuxtLink to="/thoughts">Thoughts</NuxtLink>
-      <a :href="profile.linkedin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <section class="tile">
+      <h2>Outside of Work</h2>
+      <ul>
+        <li v-for="item in about.outsideOfWork" :key="item">{{ item }}</li>
+      </ul>
     </section>
   </main>
 </template>
 
 <style scoped>
 .mondrian-page {
-  min-height: 100dvh;
+  min-height: calc(100dvh - 64px);
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
-  gap: 12px;
-  padding: 12px;
+  grid-template-columns: 1.35fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 10px;
+  padding: 10px;
   background: #111;
 }
 
 .tile {
   background: #f7f4ef;
   border: 5px solid #111;
-  padding: 1.1rem;
+  padding: 0.75rem;
 }
 
-.intro { grid-column: 1 / 3; }
+.intro {
+  padding: 0.95rem;
+}
+
+.intro {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  display: grid;
+  align-content: start;
+}
+.quick-facts { grid-column: 2 / 4; grid-row: 2 / 3; }
+
 .color.red { background: #d72d2d; }
+.color.blue { background: #1f54c7; }
+.color.yellow { background: #f3c623; }
 
-.links {
-  grid-column: 1 / -1;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  font-weight: 700;
+ul { margin: 0; padding-left: 1rem; line-height: 1.45; }
+.headshot {
+  width: 104px;
+  height: 104px;
+  object-fit: cover;
+  border: 4px solid #111;
+  border-radius: 50%;
+  margin-bottom: 0.6rem;
 }
-
-ul { margin: 0; padding-left: 1rem; line-height: 1.6; }
-.lead { font-size: 1.06rem; }
-h1 { margin-top: 0; }
-h2 { margin-top: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: .04em; }
+.lead { font-size: 0.98rem; line-height: 1.4; }
+.location {
+  margin-top: 0.65rem;
+  justify-self: end;
+  font-size: .82rem;
+  opacity: .75;
+}
+h1 { margin: 0 0 0.45rem; font-size: 1.65rem; line-height: 1.1; }
+h2 { margin: 0 0 0.45rem; font-size: 0.92rem; text-transform: uppercase; letter-spacing: .04em; }
 
 @media (max-width: 900px) {
-  .mondrian-page { grid-template-columns: 1fr; }
-  .intro { grid-column: auto; }
+  .mondrian-page { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .intro, .quick-facts { grid-column: auto; grid-row: auto; }
+  .location { justify-self: start; }
 }
 </style>

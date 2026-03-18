@@ -2,9 +2,12 @@ export type WorkItem = {
   slug: string
   name: string
   role: string
+  years: string
+  location: string
   stack: string[]
   summary: string
   details: string[]
+  kind: 'core' | 'side'
 }
 
 export type ThoughtItem = {
@@ -18,77 +21,136 @@ export type ThoughtItem = {
 
 export const profile = {
   name: 'Blake Campbell',
-  title: 'Senior Full Stack Engineer',
+  title: 'Senior Software Engineer',
   location: 'Pittsburgh, Pennsylvania, United States',
   company: 'Argonne National Laboratory',
   linkedin: 'https://www.linkedin.com/in/blake-campbell/',
+  github: 'https://github.com/BlakeCampbells',
   followers: '127+',
   connections: '122+'
 }
 
 export const about = {
-  headline: 'I’m Blake Campbell. Senior Developer.',
-  bio: 'Senior Full Stack Engineer with strong communication skills and leadership experience. Vue/Nuxt/TailwindCSS fan. Coffee drinker. Amateur gardener and chef. Always learning and improving.',
+  headline: 'Senior Engineer who turns chaos into clear, reliable products.',
+  bio: 'I found myself coding online in 2014 and quickly realized I loved it. The constant loop of iteration and feedback made learning fun, fast, and addictive. Today I focus on turning chaos into clear, practical software that teams and users actually enjoy.',
   quickFacts: [
-    'JavaScript for 8+ years',
-    'Cypress for end-to-end testing',
-    'Frontend-focused full stack engineering',
-    'Design-system + component-library driven workflow'
+    '10+ years building production software applications',
+    'Technical depth across frontend, backend, testing, and delivery',
+    'Known for turning chaos into a focused process',
+    'Trusted to lead and make smart product + design decisions',
+    "Built an Oscar's site, but lost at Oscar's trivia"
+  ],
+  approach: [
+    'Fast iteration with disciplined execution',
+    'Ask the right questions early and keep problem framing clear',
+    'Optimize for clarity and reusable patterns over clever complexity',
+    'Good code is smart, smart code is easy to read'
+  ],
+  outsideOfWork: [
+    'Running half marathons — a real challenge without marathon-level life takeover',
+    'Cooking pies, grilled steaks, chicken dishes, and pasta',
+    'DIY landscaping projects, including building a 50ft retaining wall',
+    'Free time is always busy, but fun'
   ],
   setup: [
     'MacBook Pro',
     'Dual LG Ultrawide monitors',
     'Logitech MX Master mouse',
     'Corsair Vengeance K65 keyboard'
-  ]
+  ],
+  headshot: '/images/blake-headshot.jpg'
 }
 
-export const workItems: WorkItem[] = [
+export const coreWorkItems: WorkItem[] = [
+  {
+    slug: 'argonne-national-laboratory',
+    name: 'Argonne National Laboratory',
+    role: 'Senior Software Engineer',
+    years: 'Aug 2024–Present',
+    location: 'Lemont, Illinois, United States · Remote',
+    stack: ['React.js', 'TypeScript', 'Full-Stack Development'],
+    summary: 'Senior software engineering role focused on full-stack delivery.',
+    details: [
+      'Build and maintain production web software.',
+      'Work primarily in React.js and TypeScript.',
+      'Deliver full-stack features with a focus on reliability and clarity.'
+    ],
+    kind: 'core'
+  },
   {
     slug: 'apple',
     name: 'Apple',
     role: 'Senior Full Stack Engineer',
-    stack: ['Vue', 'Node', 'Vue Test Utils', 'Jest'],
+    years: 'Oct 2021–Sep 2024',
+    location: 'Cupertino, California, United States · Remote',
+    stack: ['TypeScript', 'Full-Stack Development'],
     summary:
-      'Full stack development supporting internal review systems for machine-learning chatbots.',
+      'Built web applications to review machine-learning data and provide model feedback for AI/ML teams.',
     details: [
-      'Built internal product surfaces with Vue + Node.',
-      'Focused on test reliability through Vue Test Utils and Jest.',
-      'Work is internal and not publicly shareable.'
-    ]
+      'Worked closely with AI and Machine Learning teams.',
+      'Built web tooling to review ML training and evaluation data.',
+      'Implemented feedback workflows used to improve model quality.'
+    ],
+    kind: 'core'
+  },
+  {
+    slug: 'benefitmany',
+    name: 'BenefitMany LLC',
+    role: 'Senior Developer and Partner',
+    years: 'Oct 2017–Oct 2021',
+    location: 'Reno, Nevada, United States',
+    stack: ['JavaScript', 'Ruby on Rails', 'Ruby', 'Vue.js', 'Nuxt.js'],
+    summary:
+      'Led client delivery across multiple projects including operations and assessment platforms.',
+    details: [
+      'Built software for property assessment and inspection workflows.',
+      'Delivered manufacturing operations tooling for in-house process management.',
+      'Helped nonprofits and small businesses with practical, maintainable software.',
+      'Acted as partner-level engineering lead across parallel projects.'
+    ],
+    kind: 'core'
   },
   {
     slug: 'propelicy',
     name: 'Propelicy',
-    role: 'Frontend Developer / Founder',
-    stack: ['Vue', 'Nuxt', 'Storybook', 'Cypress', 'Rails API'],
+    role: 'Senior Developer and Partner',
+    years: 'Oct 2020–Aug 2021',
+    location: 'United States · Remote',
+    stack: ['Vue.js', 'Nuxt.js', 'Ruby on Rails', 'Rspec', 'JavaScript'],
     summary:
-      'Built large-scale insurance contracting flows and component systems to simplify broker/carrier workflows.',
+      'Built a robust Nuxt application backed by a Rails API as lead frontend developer.',
     details: [
-      'Owned and expanded a large Vue component library.',
-      'Used Nuxt for frontend architecture and delivery.',
-      'Implemented Storybook for a living design system.',
-      'Delivered end-to-end quality with Cypress.',
-      'Integrated deeply with a Rails API backend.'
-    ]
+      'Led frontend implementation and responsive UX delivery.',
+      'Maintained high code quality standards across Vue/Nuxt codebases.',
+      'Worked day-to-day with Nuxt and Rails integration patterns.'
+    ],
+    kind: 'core'
   },
   {
-    slug: 'benefitmany',
-    name: 'BenefitMany',
-    role: 'Frontend Developer / Co-Founder',
-    stack: ['Vue', 'Rails'],
+    slug: 'mortarstone',
+    name: 'MortarStone',
+    role: 'Full Stack Developer',
+    years: 'Sep 2014–Dec 2017',
+    location: 'Reno, Nevada, United States',
+    stack: ['AngularJS', 'Ruby on Rails', 'Node.js'],
     summary:
-      'Co-founded an agency focused on helping nonprofits and social-good orgs with practical software.',
+      'Built and maintained a financial analytics web platform for churches and nonprofits.',
     details: [
-      'Led frontend architecture decisions across projects.',
-      'Standardized reusable Vue components to speed delivery.',
-      'Built products for nonprofit services, operations, and education use cases.'
-    ]
-  },
+      'Developed and supported full-stack financial analytics features.',
+      'Worked across AngularJS frontend and Rails/Node backend services.',
+      'Shipped stable product improvements over a multi-year span.'
+    ],
+    kind: 'core'
+  }
+]
+
+export const sideProjects: WorkItem[] = [
   {
     slug: 'manycomm',
     name: 'ManyComm',
     role: 'Primary Frontend Developer',
+    years: 'Project',
+    location: 'Pittsburgh, Pennsylvania, United States',
     stack: ['Vue', 'WebSockets', 'Rails API'],
     summary:
       'Anonymous support-chat product created with domestic abuse hotline needs in mind.',
@@ -96,24 +158,44 @@ export const workItems: WorkItem[] = [
       'Implemented websocket session handling for real-time communication.',
       'Built chat-transfer flows and Rails API integrations.',
       'Supported autoresponder behavior when providers were unavailable.'
-    ]
+    ],
+    kind: 'side'
+  },
+  {
+    slug: 'snapremark-ios-application',
+    name: 'SnapRemark iOS Application',
+    role: 'Side Project',
+    years: '2024',
+    location: 'Pittsburgh, Pennsylvania, United States',
+    stack: ['Swift', 'iOS'],
+    summary:
+      'Built as a winter side project: a game for friends and family, published on the App Store.',
+    details: [
+      'Built with Swift for iOS.',
+      'Shipped as a real app release to the App Store.',
+      'Designed as a fun social game to play with friends and family.'
+    ],
+    kind: 'side'
+  },
+  {
+    slug: 'experian-data-dictionary',
+    name: 'Experian Data Dictionary',
+    role: 'Open Source Project',
+    years: '2015',
+    location: 'United States',
+    stack: ['Ruby', 'RubyGems'],
+    summary:
+      'Public data dictionary mapping columns and values to definitions; 5,000+ downloads.',
+    details: [
+      'Created for public use to translate data columns/values into clear definitions.',
+      'Included tests and practical examples.',
+      'Reached 5,000+ downloads.'
+    ],
+    kind: 'side'
   }
 ]
 
-export const sideProjects = [
-  {
-    name: 'SnapRemark iOS Application',
-    date: 'Nov 2024',
-    summary:
-      'Built with Swift as a winter side project: a game for friends and family, published on the App Store.'
-  },
-  {
-    name: 'Experian Data Dictionary',
-    date: 'Feb 2015',
-    summary:
-      'Public data dictionary project mapping columns and values to definitions; 5,000+ downloads.'
-  }
-]
+export const workItems: WorkItem[] = [...coreWorkItems, ...sideProjects]
 
 export const thoughts: ThoughtItem[] = [
   {
@@ -189,7 +271,8 @@ export const thoughts: ThoughtItem[] = [
 export const useSiteContent = () => ({
   profile,
   about,
-  workItems,
+  coreWorkItems,
   sideProjects,
+  workItems,
   thoughts
 })
