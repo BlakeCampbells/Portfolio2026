@@ -27,37 +27,7 @@ useHead({
   ]
 })
 
-const projects = [
-  {
-    name: 'Apple',
-    summary:
-      'Full stack development with Vue + Node, testing with Vue Test Utils and Jest, and internal chatbot-review systems.'
-  },
-  {
-    name: 'Propelicy',
-    summary:
-      'Built and maintained a large Vue/Nuxt component ecosystem, Storybook design system, Cypress E2E, Rails API integrations.'
-  },
-  {
-    name: 'BenefitMany',
-    summary:
-      'Co-founded a do-good agency helping nonprofits and clients with practical software, grant support, and reusable frontend systems.'
-  },
-  {
-    name: 'ManyComm',
-    summary:
-      'Anonymous support chat product with websocket session handling and Rails API integrations for real-time assistance.'
-  }
-]
-
-const thoughts = [
-  'Readme for a Productive 2021',
-  'Better readme in 5 minutes (Snack Pack #1)',
-  'Questions make you a better developer (Snack Pack #2)',
-  'Overlooked design, blank states (Snack Pack #3)',
-  'Are Default Params in JavaScript bad? (Snack Pack #4)',
-  'Tracing vs Transformation for developers'
-]
+const { workItems: projects, thoughts } = useSiteContent()
 </script>
 
 <template>
