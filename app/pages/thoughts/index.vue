@@ -10,8 +10,8 @@ useSeoMeta({
 <template>
   <main class="mondrian-page">
     <section class="tile intro">
-      <h1>Thoughts</h1>
-      <p>Writing on frontend development, UX, and developer growth.</p>
+      <h1>Everything else</h1>
+      <p>Notes, writing, setup details, and everything that doesn’t fit neatly elsewhere.</p>
     </section>
 
     <section class="tile color red" aria-hidden="true" />
@@ -50,8 +50,5 @@ h1 { margin-top: 0; }
 @media (max-width: 900px) {
   .mondrian-page { grid-template-columns: 1fr; }
   .intro,.span-2 { grid-column: auto; }
-}
-</style>
-column: auto; }
 }
 </style>
