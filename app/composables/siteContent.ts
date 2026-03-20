@@ -108,7 +108,7 @@ export const coreWorkItems: WorkItem[] = [
     role: 'Senior Developer and Partner',
     years: 'Oct 2017–Oct 2021',
     location: 'Reno, Nevada, United States',
-    logo: '/logos/benefitmany.svg',
+    logo: '/logos/benefitmany.png',
     stack: ['JavaScript', 'Ruby on Rails', 'Ruby', 'Vue.js', 'Nuxt.js'],
     summary:
       'Led client delivery across multiple projects including operations and assessment platforms.',

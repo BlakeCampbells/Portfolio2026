@@ -22,10 +22,7 @@ useSeoMeta({
       <ul class="list">
         <li v-for="item in coreWorkItems" :key="item.slug" class="row">
           <NuxtLink :to="`/work/${item.slug}`" class="row-link">
-            <div class="title-row">
-              <img :src="item.logo" :alt="`${item.name} logo`" class="company-logo" />
-              <h3>{{ item.name }}</h3>
-            </div>
+            <h3>{{ item.name }}</h3>
             <p><strong>{{ item.role }}</strong></p>
             <p class="meta">{{ item.years }} · {{ item.location }}</p>
             <p>{{ item.summary }}</p>
@@ -41,10 +38,7 @@ useSeoMeta({
       <ul class="list">
         <li v-for="item in sideProjects" :key="item.slug" class="row">
           <NuxtLink :to="`/work/${item.slug}`" class="row-link">
-            <div class="title-row">
-              <img :src="item.logo" :alt="`${item.name} logo`" class="company-logo" />
-              <h3>{{ item.name }}</h3>
-            </div>
+            <h3>{{ item.name }}</h3>
             <p><strong>{{ item.role }}</strong></p>
             <p class="meta">{{ item.years }} · {{ item.location }}</p>
             <p>{{ item.summary }}</p>
@@ -108,8 +102,6 @@ useSeoMeta({
 .meta { font-size: .82rem; opacity: .75; margin: .1rem 0 .45rem; }
 
 h1,h2,h3 { margin-top: 0; }
-.title-row { display: flex; align-items: center; gap: .5rem; justify-content: center; }
-.company-logo { width: 20px; height: 20px; object-fit: contain; border-radius: 4px; border: 1px solid #111; background: #fff; }
 h3 { text-align: center; font-size: .98rem; margin-bottom: .15rem; }
 h2 { font-size: 0.92rem; text-transform: uppercase; letter-spacing: .04em; margin-bottom: .45rem; }
 

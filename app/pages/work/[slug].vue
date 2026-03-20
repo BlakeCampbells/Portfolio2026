@@ -17,13 +17,13 @@ useSeoMeta({
 <template>
   <main class="mondrian-page" v-if="item">
     <section class="tile intro">
-      <div class="title-row">
-        <img :src="item.logo" :alt="`${item.name} logo`" class="company-logo" />
+      <div class="intro-content">
         <h1>{{ item.name }}</h1>
+        <p class="role">{{ item.role }}</p>
+        <p class="meta">{{ item.years }} · {{ item.location }}</p>
+        <p>{{ item.summary }}</p>
       </div>
-      <p class="role">{{ item.role }}</p>
-      <p class="meta">{{ item.years }} · {{ item.location }}</p>
-      <p>{{ item.summary }}</p>
+      <img :src="item.logo" :alt="`${item.name} logo`" class="company-logo" />
     </section>
 
     <section class="tile color yellow" aria-hidden="true" />
@@ -57,7 +57,13 @@ useSeoMeta({
   background: #111;
 }
 .tile { background: #f7f4ef; border: 5px solid #111; padding: 1.1rem; }
-.intro { grid-column: 1 / 3; }
+.intro {
+  grid-column: 1 / 3;
+  position: relative;
+}
+.intro-content {
+  padding-right: clamp(5rem, 26vw, 7.5rem);
+}
 .span-2 { grid-column: 2 / 4; }
 .color.yellow { background: #f3c623; }
 .color.red { background: #d72d2d; }
@@ -65,8 +71,20 @@ useSeoMeta({
 .role { font-weight: 700; }
 .meta { font-size: .9rem; opacity: .75; margin-top: -.2rem; }
 ul { margin: 0; padding-left: 1rem; line-height: 1.6; }
-.title-row { display: flex; align-items: center; gap: .65rem; }
-.company-logo { width: 28px; height: 28px; object-fit: contain; border-radius: 6px; border: 1px solid #111; background: #fff; }
+.company-logo {
+  position: absolute;
+  bottom: 1.1rem;
+  right: 1.1rem;
+  display: block;
+  max-height: 100px;
+  width: auto;
+  max-width: min(120px, 32vw);
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+  border: none;
+  background: none;
+}
 h1,h2 { margin-top: 0; }
 h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: .04em; }
 
