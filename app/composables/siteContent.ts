@@ -4,6 +4,7 @@ export type WorkItem = {
   role: string
   years: string
   location: string
+  logo: string
   stack: string[]
   summary: string
   details: string[]
@@ -74,6 +75,7 @@ export const coreWorkItems: WorkItem[] = [
     role: 'Senior Software Engineer',
     years: 'Aug 2024–Present',
     location: 'Lemont, Illinois, United States · Remote',
+    logo: '/logos/argonne.svg',
     stack: ['React.js', 'TypeScript', 'Full-Stack Development'],
     summary: 'Senior software engineering role focused on full-stack delivery.',
     details: [
@@ -89,6 +91,7 @@ export const coreWorkItems: WorkItem[] = [
     role: 'Senior Full Stack Engineer',
     years: 'Oct 2021–Sep 2024',
     location: 'Cupertino, California, United States · Remote',
+    logo: '/logos/apple.svg',
     stack: ['TypeScript', 'Full-Stack Development'],
     summary:
       'Built web applications to review machine-learning data and provide model feedback for AI/ML teams.',
@@ -105,6 +108,7 @@ export const coreWorkItems: WorkItem[] = [
     role: 'Senior Developer and Partner',
     years: 'Oct 2017–Oct 2021',
     location: 'Reno, Nevada, United States',
+    logo: '/logos/benefitmany.svg',
     stack: ['JavaScript', 'Ruby on Rails', 'Ruby', 'Vue.js', 'Nuxt.js'],
     summary:
       'Led client delivery across multiple projects including operations and assessment platforms.',
@@ -122,6 +126,7 @@ export const coreWorkItems: WorkItem[] = [
     role: 'Senior Developer and Partner',
     years: 'Oct 2020–Aug 2021',
     location: 'United States · Remote',
+    logo: '/logos/propelicy.svg',
     stack: ['Vue.js', 'Nuxt.js', 'Ruby on Rails', 'Rspec', 'JavaScript'],
     summary:
       'Built a robust Nuxt application backed by a Rails API as lead frontend developer.',
@@ -138,6 +143,7 @@ export const coreWorkItems: WorkItem[] = [
     role: 'Full Stack Developer',
     years: 'Sep 2014–Dec 2017',
     location: 'Reno, Nevada, United States',
+    logo: '/logos/mortarstone.svg',
     stack: ['AngularJS', 'Ruby on Rails', 'Node.js'],
     summary:
       'Built and maintained a financial analytics web platform for churches and nonprofits.',
@@ -157,6 +163,7 @@ export const sideProjects: WorkItem[] = [
     role: 'Primary Frontend Developer',
     years: 'Project',
     location: 'Pittsburgh, Pennsylvania, United States',
+    logo: '/logos/manycomm.svg',
     stack: ['Vue', 'WebSockets', 'Rails API'],
     summary:
       'Anonymous support-chat product created with domestic abuse hotline needs in mind.',
@@ -173,6 +180,7 @@ export const sideProjects: WorkItem[] = [
     role: 'Side Project',
     years: '2024',
     location: 'Pittsburgh, Pennsylvania, United States',
+    logo: '/logos/snapremark.svg',
     stack: ['Swift', 'iOS'],
     summary:
       'Built as a winter side project: a game for friends and family, published on the App Store.',
@@ -189,6 +197,7 @@ export const sideProjects: WorkItem[] = [
     role: 'Open Source Project',
     years: '2015',
     location: 'United States',
+    logo: '/logos/experian.svg',
     stack: ['Ruby', 'RubyGems'],
     summary:
       'Public data dictionary mapping columns and values to definitions; 5,000+ downloads.',

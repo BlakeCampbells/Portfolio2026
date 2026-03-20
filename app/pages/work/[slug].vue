@@ -17,7 +17,10 @@ useSeoMeta({
 <template>
   <main class="mondrian-page" v-if="item">
     <section class="tile intro">
-      <h1>{{ item.name }}</h1>
+      <div class="title-row">
+        <img :src="item.logo" :alt="`${item.name} logo`" class="company-logo" />
+        <h1>{{ item.name }}</h1>
+      </div>
       <p class="role">{{ item.role }}</p>
       <p class="meta">{{ item.years }} · {{ item.location }}</p>
       <p>{{ item.summary }}</p>
@@ -62,6 +65,8 @@ useSeoMeta({
 .role { font-weight: 700; }
 .meta { font-size: .9rem; opacity: .75; margin-top: -.2rem; }
 ul { margin: 0; padding-left: 1rem; line-height: 1.6; }
+.title-row { display: flex; align-items: center; gap: .65rem; }
+.company-logo { width: 28px; height: 28px; object-fit: contain; border-radius: 6px; border: 1px solid #111; background: #fff; }
 h1,h2 { margin-top: 0; }
 h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: .04em; }
 
