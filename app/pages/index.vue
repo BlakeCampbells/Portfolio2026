@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { about, coreWorkItems, sideProjects, thoughts } = useSiteContent()
+const { about, coreWorkItems, sideProjects, aboutMeFun } = useSiteContent()
 
 useSeoMeta({
   title: 'Portfolio',
@@ -83,13 +83,11 @@ useHead({
       </ul>
     </section>
 
-    <section class="tile thoughts">
-      <h2>Everything else</h2>
-      <ul>
-        <li v-for="post in thoughts" :key="post.slug">
-          <NuxtLink :to="`/uses/${post.slug}`" class="item-link">
-            {{ post.title }}
-          </NuxtLink>
+    <section class="tile about-me">
+      <h2>About me</h2>
+      <ul class="about-me-list">
+        <li v-for="(line, i) in aboutMeFun" :key="i">
+          {{ line }}
         </li>
       </ul>
     </section>
@@ -126,7 +124,7 @@ useHead({
 .about { grid-column: 2 / 4; grid-row: 2 / 3; }
 .work { grid-column: 1 / 2; grid-row: 3 / 5; }
 .projects { grid-column: 2 / 3; grid-row: 4 / 5; }
-.thoughts { grid-column: 3 / 4; grid-row: 3 / 5; }
+.about-me { grid-column: 3 / 4; grid-row: 3 / 5; }
 
 .work li:hover {
   transform: translateY(-1px);
@@ -138,15 +136,10 @@ useHead({
   box-shadow: 4px 4px 0 #1f54c7, 7px 7px 0 #f3c623;
 }
 
-.thoughts li:hover {
-  transform: translateY(-1px);
-  box-shadow: 4px 4px 0 #f3c623, 7px 7px 0 #d72d2d;
-}
-
 h2 { margin: 0 0 0.65rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.04em; }
 ul { margin: 0; padding-left: 1rem; }
-.work ul, .projects ul, .thoughts ul { display: grid; gap: 0; list-style: none; padding-left: 0; }
-.work li, .projects li, .thoughts li {
+.work ul, .projects ul, .about-me ul { display: grid; gap: 0; list-style: none; padding-left: 0; }
+.work li, .projects li {
   display: block;
   border: 3px solid transparent;
   border-bottom: 2px solid #111;
@@ -154,9 +147,16 @@ ul { margin: 0; padding-left: 1rem; }
   transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
 }
 
+.about-me li {
+  display: block;
+  border: 3px solid transparent;
+  border-bottom: 2px solid #111;
+  background: #f7f4ef;
+}
+
 .work li:last-child,
 .projects li:last-child,
-.thoughts li:last-child {
+.about-me li:last-child {
   border-bottom: 0;
 }
 
@@ -175,6 +175,11 @@ ul { margin: 0; padding-left: 1rem; }
 .work span, .projects span { font-size: 0.92rem; }
 .proof-points { display: grid; gap: 0.55rem; }
 .proof-points li { line-height: 1.35; }
+.about-me-list li {
+  padding: 0.55rem 0.6rem;
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
 .years { font-size: 0.78rem; opacity: 0.7; }
 .red { background: #d72d2d; }
 .blue { background: #1f54c7; }
@@ -194,6 +199,6 @@ p { margin: 0; }
 
 @media (max-width: 900px) {
   .mondrian { grid-template-columns: 1fr; grid-template-rows: auto; }
-  .intro, .about, .work, .projects, .thoughts { grid-column: auto; grid-row: auto; }
+  .intro, .about, .work, .projects, .about-me { grid-column: auto; grid-row: auto; }
 }
 </style>

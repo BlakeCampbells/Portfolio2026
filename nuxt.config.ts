@@ -55,6 +55,7 @@ export default defineNuxtConfig({
         '/work/snapremark-ios-application',
         '/work/experian-data-dictionary',
         '/work/awardwentto',
+        '/work/uses-tech',
         '/uses/readme-for-a-productive-2021',
         '/uses/better-readme-in-5-minutes-snack-pack-1',
         '/uses/questions-make-you-a-better-developer-snack-pack-2',

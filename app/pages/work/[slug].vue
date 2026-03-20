@@ -17,7 +17,7 @@ useSeoMeta({
 <template>
   <main class="mondrian-page" v-if="item">
     <section class="tile intro">
-      <div class="intro-content">
+      <div class="intro-content" :class="{ 'has-logo': item.logo }">
         <h1>{{ item.name }}</h1>
         <p class="role">{{ item.role }}</p>
         <p class="meta">{{ item.years }} · {{ item.location }}</p>
@@ -46,7 +46,12 @@ useSeoMeta({
           </a>
         </p>
       </div>
-      <img :src="item.logo" :alt="`${item.name} logo`" class="company-logo" />
+      <img
+        v-if="item.logo"
+        :src="item.logo"
+        :alt="`${item.name} logo`"
+        class="company-logo"
+      />
     </section>
 
     <section class="tile color yellow" aria-hidden="true" />
@@ -84,7 +89,7 @@ useSeoMeta({
   grid-column: 1 / 3;
   position: relative;
 }
-.intro-content {
+.intro-content.has-logo {
   padding-right: clamp(5rem, 26vw, 7.5rem);
 }
 .span-2 { grid-column: 2 / 4; }

@@ -4,7 +4,7 @@ export type WorkItem = {
   role: string
   years: string
   location: string
-  logo: string
+  logo?: string
   stack: string[]
   summary: string
   details: string[]
@@ -69,6 +69,16 @@ export const about = {
   ],
   headshot: '/images/blake-headshot.jpg'
 }
+
+/** Fun facts for the home page “About me” tile (not resume-style). */
+export const aboutMeFun: string[] = [
+  'Working remote from Pittsburgh, PA—home office.',
+  'Married six years; three rescue dogs.',
+  'Wake-up alarm: math problems.',
+  'Built awardwentto.com for the Oscars—still lost at Oscar trivia.',
+  'Half marathons, cooking, DIY landscaping (including a 50ft retaining wall).',
+  'Helps maintain uses.tech so developers can share how they work.'
+]
 
 export const coreWorkItems: WorkItem[] = [
   {
@@ -202,6 +212,32 @@ export const sideProjects: WorkItem[] = [
     kind: 'side'
   },
   {
+    slug: 'uses-tech',
+    name: 'uses.tech',
+    role: 'Primary Maintainer',
+    years: '2021–Present',
+    location: 'Pittsburgh, Pennsylvania, United States',
+    stack: ['Remix', 'React', 'TypeScript', 'Netlify'],
+    summary:
+      'Community hub for /uses pages—where developers share gear, software, stacks, and personal sites. Primary maintainer since 2021.',
+    details: [
+      'Primary maintainer on the open source project behind uses.tech (awesome-uses): reviewing PRs, triage, and keeping the directory healthy.',
+      'Supports contributors adding their own /uses pages and discovering how others work.',
+      'Active since 2021—merges, releases, and day-to-day upkeep alongside the rest of the maintainer team.'
+    ],
+    links: [
+      {
+        label: 'uses.tech',
+        href: 'https://uses.tech'
+      },
+      {
+        label: 'GitHub',
+        href: 'https://github.com/wesbos/awesome-uses'
+      }
+    ],
+    kind: 'side'
+  },
+  {
     slug: 'manycomm',
     name: 'ManyComm',
     role: 'Primary Frontend Developer',
@@ -325,6 +361,7 @@ export const thoughts: ThoughtItem[] = [
 export const useSiteContent = () => ({
   profile,
   about,
+  aboutMeFun,
   coreWorkItems,
   sideProjects,
   workItems,
