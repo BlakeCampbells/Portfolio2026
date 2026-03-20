@@ -22,6 +22,29 @@ useSeoMeta({
         <p class="role">{{ item.role }}</p>
         <p class="meta">{{ item.years }} · {{ item.location }}</p>
         <p>{{ item.summary }}</p>
+        <p v-if="item.links?.length || item.siteUrl" class="site-link-wrap">
+          <template v-if="item.links?.length">
+            <a
+              v-for="link in item.links"
+              :key="link.href"
+              :href="link.href"
+              class="site-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ link.label }}
+            </a>
+          </template>
+          <a
+            v-else-if="item.siteUrl"
+            :href="item.siteUrl"
+            class="site-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View site
+          </a>
+        </p>
       </div>
       <img :src="item.logo" :alt="`${item.name} logo`" class="company-logo" />
     </section>
@@ -70,6 +93,20 @@ useSeoMeta({
 .color.blue { background: #1f54c7; }
 .role { font-weight: 700; }
 .meta { font-size: .9rem; opacity: .75; margin-top: -.2rem; }
+.site-link-wrap {
+  margin-top: .65rem;
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+}
+.site-link {
+  font-weight: 700;
+  color: #1f54c7;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.site-link:hover { color: #111; }
 ul { margin: 0; padding-left: 1rem; line-height: 1.6; }
 .company-logo {
   position: absolute;

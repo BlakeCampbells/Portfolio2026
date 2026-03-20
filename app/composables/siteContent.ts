@@ -9,6 +9,8 @@ export type WorkItem = {
   summary: string
   details: string[]
   kind: 'core' | 'side'
+  siteUrl?: string
+  links?: { label: string; href: string }[]
 }
 
 export type ThoughtItem = {
@@ -158,6 +160,42 @@ export const coreWorkItems: WorkItem[] = [
 
 export const sideProjects: WorkItem[] = [
   {
+    slug: 'awardwentto',
+    name: 'awardwentto.com',
+    role: 'Creator',
+    years: '2025–Present',
+    location: 'Pittsburgh, Pennsylvania, United States',
+    logo: '/logos/awardwentto.svg',
+    siteUrl: 'https://awardwentto.com',
+    stack: ['Nuxt 4', 'Vite', 'TypeScript', 'Cloudflare'],
+    summary:
+      'Oscar-themed data visualizations of nominees and winners over time, plus prediction sheets and bingo for the upcoming ceremony.',
+    details: [
+      'Built interactive views of Academy Awards history across nominees and winners.',
+      'Hosts prediction sheets for the next Oscars and bingo for watch parties.',
+      'Shipped with Nuxt 4 and Vite, deployed on Cloudflare.'
+    ],
+    kind: 'side'
+  },
+  {
+    slug: 'snapremark-ios-application',
+    name: 'SnapRemark iOS Application',
+    role: 'Creator',
+    years: 'Winter 2024',
+    location: 'Pittsburgh, Pennsylvania, United States',
+    logo: '/logos/snapremark.svg',
+    stack: ['Swift', 'iOS'],
+    summary:
+      'Solo winter build: a social game for friends and family, written in Swift and released on the App Store.',
+    details: [
+      'Designed and shipped end-to-end as a native iOS app.',
+      'Built in Swift with a focus on a fun, lightweight experience for small groups.',
+      'Published to the App Store as a real shipping product—not a prototype.',
+      'Scratch-built to learn iOS delivery while making something people could actually play together.'
+    ],
+    kind: 'side'
+  },
+  {
     slug: 'manycomm',
     name: 'ManyComm',
     role: 'Primary Frontend Developer',
@@ -166,28 +204,12 @@ export const sideProjects: WorkItem[] = [
     logo: '/logos/manycomm.svg',
     stack: ['Vue', 'WebSockets', 'Rails API'],
     summary:
-      'Anonymous support-chat product created with domestic abuse hotline needs in mind.',
+      'Anonymous text and chat for people seeking help—born from a partnership with a local domestic abuse hotline.',
     details: [
-      'Implemented websocket session handling for real-time communication.',
-      'Built chat-transfer flows and Rails API integrations.',
-      'Supported autoresponder behavior when providers were unavailable.'
-    ],
-    kind: 'side'
-  },
-  {
-    slug: 'snapremark-ios-application',
-    name: 'SnapRemark iOS Application',
-    role: 'Side Project',
-    years: '2024',
-    location: 'Pittsburgh, Pennsylvania, United States',
-    logo: '/logos/snapremark.svg',
-    stack: ['Swift', 'iOS'],
-    summary:
-      'Built as a winter side project: a game for friends and family, published on the App Store.',
-    details: [
-      'Built with Swift for iOS.',
-      'Shipped as a real app release to the App Store.',
-      'Designed as a fun social game to play with friends and family.'
+      'Product goal: private, anonymous support conversations for people in crisis.',
+      'Vue frontend with WebSocket-backed sessions for real-time messaging.',
+      'Implemented chat transfer flows and tight integration with a Rails API.',
+      'Autoresponders when no service provider was available so users always got a clear next step.'
     ],
     kind: 'side'
   },
@@ -200,11 +222,22 @@ export const sideProjects: WorkItem[] = [
     logo: '/logos/experian.svg',
     stack: ['Ruby', 'RubyGems'],
     summary:
-      'Public data dictionary mapping columns and values to definitions; 5,000+ downloads.',
+      "Ruby gem for Experian's data dictionary API and docs—built for open source users; 20,000+ downloads. Finished release, stable legacy.",
     details: [
-      'Created for public use to translate data columns/values into clear definitions.',
-      'Included tests and practical examples.',
-      'Reached 5,000+ downloads.'
+      "Focused on API and documentation workflows for anyone integrating against Experian's public data dictionary.",
+      'Shipped with 100% test coverage and practical examples.',
+      'Marked complete years ago and left unchanged—a small, stable utility others can still rely on.',
+      '20,000+ downloads on RubyGems.'
+    ],
+    links: [
+      {
+        label: 'RubyGems',
+        href: 'https://rubygems.org/gems/experian-data-dictionary'
+      },
+      {
+        label: 'Source on GitHub',
+        href: 'https://github.com/BlakeCampbells/nairepxe_data_dictionary'
+      }
     ],
     kind: 'side'
   }

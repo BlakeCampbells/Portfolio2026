@@ -54,6 +54,7 @@ export default defineNuxtConfig({
         '/work/manycomm',
         '/work/snapremark-ios-application',
         '/work/experian-data-dictionary',
+        '/work/awardwentto',
         '/uses/readme-for-a-productive-2021',
         '/uses/better-readme-in-5-minutes-snack-pack-1',
         '/uses/questions-make-you-a-better-developer-snack-pack-2',
