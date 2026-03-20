@@ -179,19 +179,25 @@ export const sideProjects: WorkItem[] = [
   },
   {
     slug: 'snapremark-ios-application',
-    name: 'SnapRemark iOS Application',
+    name: 'SnapRemark',
     role: 'Creator',
-    years: 'Winter 2024',
+    years: '2024–Present',
     location: 'Pittsburgh, Pennsylvania, United States',
     logo: '/logos/snapremark.svg',
     stack: ['Swift', 'iOS'],
     summary:
-      'Solo winter build: a social game for friends and family, written in Swift and released on the App Store.',
+      'Solo iOS side project: a social game for friends and family, written in Swift—live on the App Store.',
     details: [
       'Designed and shipped end-to-end as a native iOS app.',
       'Built in Swift with a focus on a fun, lightweight experience for small groups.',
       'Published to the App Store as a real shipping product—not a prototype.',
       'Scratch-built to learn iOS delivery while making something people could actually play together.'
+    ],
+    links: [
+      {
+        label: 'App Store',
+        href: 'https://apps.apple.com/us/app/snapremark/id6738997529'
+      }
     ],
     kind: 'side'
   },
