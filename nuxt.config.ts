@@ -1,3 +1,5 @@
+import { coreWorkItems, sideProjects } from './app/composables/siteContent'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -14,9 +16,15 @@ export default defineNuxtConfig({
           name: 'description',
           content:
             'Blake Campbell portfolio — modern web work, clean systems, and thoughtful product execution.'
-        }
+        },
+        { name: 'theme-color', content: '#111111' }
       ],
-      link: [{ rel: 'canonical', href: 'https://blakecampbell.com' }]
+      link: [
+        { rel: 'canonical', href: 'https://blakecampbell.com' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'alternate icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'manifest', href: '/site.webmanifest' }
+      ]
     }
   },
 
@@ -32,7 +40,14 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
-    autoLastmod: true
+    autoLastmod: true,
+    urls: [
+      '/',
+      '/about',
+      '/work',
+      '/uses',
+      ...[...coreWorkItems, ...sideProjects].map(item => `/work/${item.slug}`)
+    ]
   },
 
   robots: {
@@ -46,16 +61,7 @@ export default defineNuxtConfig({
         '/about',
         '/work',
         '/uses',
-        '/work/argonne-national-laboratory',
-        '/work/apple',
-        '/work/benefitmany',
-        '/work/propelicy',
-        '/work/mortarstone',
-        '/work/manycomm',
-        '/work/snapremark-ios-application',
-        '/work/experian-data-dictionary',
-        '/work/awardwentto',
-        '/work/uses-tech',
+        ...[...coreWorkItems, ...sideProjects].map(item => `/work/${item.slug}`),
         '/sitemap.xml',
         '/robots.txt'
       ]
