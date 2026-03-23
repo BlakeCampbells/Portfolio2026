@@ -13,13 +13,9 @@ export type WorkItem = {
   links?: { label: string; href: string }[]
 }
 
-export type ThoughtItem = {
-  slug: string
+export type UsesCategory = {
   title: string
-  date: string
-  summary: string
-  sections: string[]
-  bullets?: string[]
+  items: string[]
 }
 
 export const profile = {
@@ -69,6 +65,57 @@ export const about = {
   ],
   headshot: '/images/blake-headshot.jpg'
 }
+
+export const usesCategories: UsesCategory[] = [
+  {
+    title: 'Computer Setup',
+    items: [
+      'Apple M1 MacBook Air, 16GB RAM',
+      'M1 Max Studio, 32 GB RAM',
+      'Alienware 34" Ultrawide Curved Monitor',
+      'Logitech MX Master mouse',
+      'Keychron K8 Wireless Mechanical Keyboard',
+      'Keychron Wooden Palm Rest',
+      'Blue Snowball USB Microphone'
+    ]
+  },
+  {
+    title: 'Desk Audio',
+    items: [
+      'SENNHEISER HD 599 Open Back Headphone, Ivory (Primary)',
+      'Audio-Technica ATH-M50X',
+      'AirPods Pro',
+      'Spotify for background music while coding'
+    ]
+  },
+  {
+    title: 'Software',
+    items: [
+      'Notion for planning and docs',
+      'GitHub for version control and collaboration',
+      'Pocket Casts for podcasts',
+      'Calendar plus reminders to keep delivery on track',
+      'A simple notes-and-tasks workflow over overbuilt personal systems'
+    ]
+  },
+  {
+    title: 'Carry Items',
+    items: [
+      'Laptop',
+      'AirPods',
+      'Chargers'
+    ]
+  },
+  {
+    title: 'Other',
+    items: [
+      'Brooks Ghost daily running shoes',
+      'Ryobi Tools for DIY home projects',
+      'Herman Miller Aeron Desk Chair',
+      'Standing Desk'
+    ]
+  }
+]
 
 /** Fun facts for the home page “About me” tile (not resume-style). */
 export const aboutMeFun: string[] = [
@@ -287,83 +334,12 @@ export const sideProjects: WorkItem[] = [
 
 export const workItems: WorkItem[] = [...coreWorkItems, ...sideProjects]
 
-export const thoughts: ThoughtItem[] = [
-  {
-    slug: 'readme-for-a-productive-2021',
-    title: 'Readme for a Productive 2021',
-    date: '2020-12-28',
-    summary: 'Theme-based planning, clean workspace habits, breaks, and deliberate learning loops.',
-    sections: [
-      'Pick a yearly theme instead of a fragile pass/fail goal. It gives direction without boxing you in.',
-      'Start with environment cleanup: workspace, downloads, and anything adding friction.',
-      'Protect your off time. Burnout is bad strategy, not a badge of honor.',
-      'Keep a personal project. It helps you practice, stay curious, and keep learning momentum.'
-    ]
-  },
-  {
-    slug: 'better-readme-in-5-minutes-snack-pack-1',
-    title: 'Better readme in 5 minutes (Snack Pack #1)',
-    date: '2021-02-28',
-    summary: 'Documentation is an easy win: project context, setup, architecture, and testing basics.',
-    sections: [
-      'Readmes are often neglected, but they are one of the fastest quality upgrades you can make.',
-      'A useful README should explain who the project is for, how to set it up, and what stack it uses.',
-      'Include architecture notes, testing/formatting expectations, and practical FAQs for future contributors.'
-    ]
-  },
-  {
-    slug: 'questions-make-you-a-better-developer-snack-pack-2',
-    title: 'Questions make you a better developer (Snack Pack #2)',
-    date: '2021-03-07',
-    summary: 'Better developer outcomes come from specific, well-phrased, curiosity-driven questions.',
-    sections: [
-      'Great questions have specificity, clear phrasing, and genuine curiosity.',
-      'Vague questions create vague answers. Break big problems into actionable parts.',
-      'Phrasing matters: ask to improve, not to blame.',
-      'Curiosity-driven questions compound learning over time.'
-    ]
-  },
-  {
-    slug: 'overlooked-design-blank-states-snack-pack-3',
-    title: 'Overlooked design, blank states (Snack Pack #3)',
-    date: '2021-03-27',
-    summary: 'Blank states are UX critical—perceived bugs are still bugs if users lack feedback.',
-    sections: [
-      'Most users are not technical. Without feedback, they assume the app is broken.',
-      'Design should make system state obvious: empty results vs errors vs loading are different experiences.',
-      'Blank states are product quality, not cosmetic details.'
-    ]
-  },
-  {
-    slug: 'are-default-params-in-javascript-bad-snack-pack-4',
-    title: 'Are Default Params in JavaScript bad? (Snack Pack #4)',
-    date: '2021-04-10',
-    summary: 'Default params are fine as fallback, but explicit params reduce confusion and debt.',
-    sections: [
-      'Defaults help as fallback behavior, but relying on them too heavily can hide intent.',
-      'A boolean options parameter often becomes ambiguous over time.',
-      'Prefer explicit calls and descriptive parameters to reduce technical debt and improve readability.'
-    ]
-  },
-  {
-    slug: 'tracing-vs-transformation-for-developers',
-    title: 'Tracing vs Transformation for developers',
-    date: '2022-02-01',
-    summary: 'Tracing helps learning; transformation creates durable product value.',
-    sections: [
-      'Tracing (clones/tutorial follow-alongs) is useful for learning foundations.',
-      'Transformation means meaningful product improvement, not cosmetic changes.',
-      'Long-term products come from transformation or original creation, not copy-first momentum.'
-    ]
-  }
-]
-
 export const useSiteContent = () => ({
   profile,
   about,
+  usesCategories,
   aboutMeFun,
   coreWorkItems,
   sideProjects,
-  workItems,
-  thoughts
+  workItems
 })

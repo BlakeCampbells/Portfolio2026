@@ -56,12 +56,6 @@ export default defineNuxtConfig({
         '/work/experian-data-dictionary',
         '/work/awardwentto',
         '/work/uses-tech',
-        '/uses/readme-for-a-productive-2021',
-        '/uses/better-readme-in-5-minutes-snack-pack-1',
-        '/uses/questions-make-you-a-better-developer-snack-pack-2',
-        '/uses/overlooked-design-blank-states-snack-pack-3',
-        '/uses/are-default-params-in-javascript-bad-snack-pack-4',
-        '/uses/tracing-vs-transformation-for-developers',
         '/sitemap.xml',
         '/robots.txt'
       ]
