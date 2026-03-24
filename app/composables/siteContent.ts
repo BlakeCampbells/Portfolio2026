@@ -238,9 +238,12 @@ export const sideProjects: WorkItem[] = [
     stack: ['Nuxt 4', 'Vite', 'TypeScript', 'Cloudflare'],
     summary:
       'Oscar-themed data visualizations of nominees and winners over time, plus prediction sheets and bingo for the upcoming ceremony.',
+    caseStudy:
+      'AwardWentTo started from a simple personal request: my wife wanted a better way to visualize Oscar winners over time, including how ratings and runtime relate to results. I built the site in Nuxt to make Academy Awards history easier to explore and more fun to interact with. Beyond charts, the product includes Oscar bingo, year-by-year rundowns of nominees and winners, and historical category timeline data. The outcome is a polished, data-driven fan experience that blends utility and entertainment for awards season.',
     details: [
       'Built interactive views of Academy Awards history across nominees and winners.',
-      'Hosts prediction sheets for the next Oscars and bingo for watch parties.',
+      'Tracks patterns like winner context by runtime and ratings trends.',
+      'Includes Oscar bingo, yearly rundowns, and historical category-introduction data.',
       'Shipped with Nuxt 4 and Vite, deployed on Cloudflare.'
     ],
     kind: 'side'
