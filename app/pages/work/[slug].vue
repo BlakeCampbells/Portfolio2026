@@ -12,6 +12,23 @@ if (!item.value) {
 const canonical = `${siteUrl}/work/${item.value.slug}`
 const ogImage = `${siteUrl}/images/blake-headshot.jpg`
 
+const caseStudyParagraphs = computed(() => {
+  const text = item.value?.caseStudy?.trim()
+  if (!text) return []
+
+  const sentences = text
+    .split(/(?<=[.!?])\s+/)
+    .map((s) => s.trim())
+    .filter(Boolean)
+
+  const chunks: string[] = []
+  for (let i = 0; i < sentences.length; i += 2) {
+    chunks.push(sentences.slice(i, i + 2).join(' '))
+  }
+
+  return chunks
+})
+
 useSeoMeta({
   title: `${item.value.name} | Blake Campbell`,
   description: item.value.summary,
@@ -98,7 +115,9 @@ useHead({
 
     <section v-if="item.caseStudy" class="tile span-2">
       <h2>Case Study</h2>
-      <p class="case-study">{{ item.caseStudy }}</p>
+      <p v-for="(paragraph, idx) in caseStudyParagraphs" :key="idx" class="case-study">
+        {{ paragraph }}
+      </p>
     </section>
 
     <section class="tile span-2">
@@ -148,7 +167,8 @@ useHead({
 }
 .site-link:hover { color: #111; }
 ul { margin: 0; padding-left: 1rem; line-height: 1.6; }
-.case-study { margin: 0; line-height: 1.65; }
+.case-study { margin: 0 0 .8rem; line-height: 1.65; }
+.case-study:last-of-type { margin-bottom: 0; }
 .company-logo {
   position: absolute;
   bottom: 1.1rem;
