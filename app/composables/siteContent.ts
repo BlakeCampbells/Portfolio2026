@@ -196,6 +196,8 @@ export const coreWorkItems: WorkItem[] = [
     stack: ['Vue.js', 'Nuxt.js', 'Ruby on Rails', 'Rspec', 'JavaScript'],
     summary:
       'Built a robust Nuxt application backed by a Rails API as lead frontend developer.',
+    caseStudy:
+      'Propelicy was built to help insurance agents and agencies handle certification and registration for different policies in one place. The core problem was fragmentation: agents were juggling policy requirements and provider processes across disconnected systems. As cofounder and frontend lead, I owned the product experience for the central dashboard, focusing on clear workflow design and reliable day-to-day usability. I built the frontend on Vue/Nuxt with a Rails API backend and helped shape features that made policy onboarding easier to track. The result was a successful regional platform that supported growth through new policy types and additional insurance providers.',
     details: [
       'Led frontend implementation and responsive UX delivery.',
       'Maintained high code quality standards across Vue/Nuxt codebases.',
