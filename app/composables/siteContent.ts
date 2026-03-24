@@ -258,6 +258,8 @@ export const sideProjects: WorkItem[] = [
     stack: ['Swift', 'iOS'],
     summary:
       'Solo iOS side project: a social game for friends and family, written in Swift—live on the App Store.',
+    caseStudy:
+      'SnapRemark started as a personal project inspired by party word-guessing games like Catchphrase. I wanted to build something I would actually use with friends and family while learning deeper native iOS development in Swift. The product focused on quick, social gameplay and smooth in-person interactions. I built and shipped the app end-to-end and collaborated with a close friend on the logo and visual identity. The outcome was a real App Store release that turned a fun idea into a polished, playable product.',
     details: [
       'Designed and shipped end-to-end as a native iOS app.',
       'Built in Swift with a focus on a fun, lightweight experience for small groups.',
