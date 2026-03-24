@@ -42,7 +42,7 @@ a {
   align-items: center;
   gap: 0.55rem;
   font-weight: 700;
-  overflow-x: auto;
+  overflow-x: hidden;
   white-space: nowrap;
 }
 
@@ -87,4 +87,27 @@ a {
 
 main {
   padding-top: 0;
+}
+
+@media (max-width: 760px) {
+  .top-nav {
+    padding: 0 8px 8px;
+  }
+
+  .top-nav-inner {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.35rem;
+    white-space: normal;
+    overflow-x: visible;
+  }
+
+  .top-nav-inner a {
+    width: 100%;
+    justify-content: center;
+    height: 34px;
+    padding: 0 0.45rem;
+    border-width: 4px;
+    font-size: 0.83rem;
+  }
 }
