@@ -281,9 +281,12 @@ export const sideProjects: WorkItem[] = [
     stack: ['Remix', 'React', 'TypeScript', 'Netlify'],
     summary:
       'Community hub for /uses pages—where developers share gear, software, stacks, and personal sites. Primary maintainer since 2021.',
+    caseStudy:
+      'Uses.tech is an open source project built for developers to share their setups, workflows, and languages through /uses pages. As a maintainer for the past three years, I handle daily pull requests, content updates, and repo hygiene work. A key part of the job is keeping the directory trustworthy by removing lapsed links and purging stale entries. The outcome is a cleaner, more reliable community resource that stays useful for developers looking to learn from each other’s tooling and workflows.',
     details: [
       'Primary maintainer on the open source project behind uses.tech (awesome-uses): reviewing PRs, triage, and keeping the directory healthy.',
       'Supports contributors adding their own /uses pages and discovering how others work.',
+      'Removes broken links and prunes stale data to keep quality high for readers.',
       'Active since 2021—merges, releases, and day-to-day upkeep alongside the rest of the maintainer team.'
     ],
     links: [
