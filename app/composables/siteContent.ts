@@ -305,6 +305,8 @@ export const sideProjects: WorkItem[] = [
     stack: ['Vue', 'WebSockets', 'Rails API'],
     summary:
       'Anonymous text and chat for people seeking help—born from a partnership with a local domestic abuse hotline.',
+    caseStudy:
+      'ManyComm was built to give victims of domestic violence a truly anonymous way to connect with volunteers and local support. The challenge was delivering fast, human communication while protecting privacy at all costs. We designed chat and text workflows where sensitive records could be wiped to reduce legal exposure and help keep victims safe. I owned frontend implementation and focused on making high-stress interactions clear, trustworthy, and easy to use. The outcome was a safer support channel that helped people reach real assistance while prioritizing confidentiality.',
     details: [
       'Product goal: private, anonymous support conversations for people in crisis.',
       'Vue frontend with WebSocket-backed sessions for real-time messaging.',
