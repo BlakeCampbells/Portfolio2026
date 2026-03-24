@@ -214,7 +214,9 @@ export const coreWorkItems: WorkItem[] = [
     logo: '/logos/mortarstone.svg',
     stack: ['AngularJS', 'Ruby on Rails', 'Node.js'],
     summary:
-      'Built and maintained a financial analytics web platform for churches and nonprofits.',
+      'Built and maintained a donor analytics web platform for churches and nonprofits.',
+    caseStudy:
+      'MortarStone helps churches and nonprofits understand donor behavior and keep leadership teams informed with better fundraising visibility. A key challenge during my time there was moving beyond older jQuery-era frontend patterns while continuing to support active product needs. As a frontend developer, I worked in AngularJS 1.x and helped modernize the UI architecture while integrating with existing backend services. The outcome was a more maintainable analytics product and clearer donor insight workflows for nonprofit and church leadership teams.',
     details: [
       'Developed and supported full-stack financial analytics features.',
       'Worked across AngularJS frontend and Rails/Node backend services.',
