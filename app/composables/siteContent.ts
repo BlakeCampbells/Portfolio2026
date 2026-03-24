@@ -328,6 +328,8 @@ export const sideProjects: WorkItem[] = [
     stack: ['Ruby', 'RubyGems'],
     summary:
       "Ruby gem for Experian's data dictionary API and docs—built for open source users; 20,000+ downloads. Finished release, stable legacy.",
+    caseStudy:
+      "The Experian Data Dictionary project started at MortarStone after we received an Experian report and needed to programmatically write that data to a database for charting and analysis. To solve that workflow, I built a Ruby gem around Experian's data dictionary API so field mappings and value definitions were easier to integrate and maintain. Once it proved useful internally, we open sourced it so other teams and developers could use the same tooling. The outcome was a stable utility with practical documentation and long-tail community usage.",
     details: [
       "Focused on API and documentation workflows for anyone integrating against Experian's public data dictionary.",
       'Shipped with 100% test coverage and practical examples.',
