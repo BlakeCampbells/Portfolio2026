@@ -1,19 +1,28 @@
 <script setup lang="ts">
 const { about, coreWorkItems, sideProjects, aboutMeFun } = useSiteContent()
 
+const siteUrl = 'https://blakecampbell.com'
+const altSiteUrl = 'https://blakec.xyz'
+const canonical = `${siteUrl}/`
+const ogImage = `${siteUrl}/images/blake-headshot.jpg`
+
 useSeoMeta({
-  title: 'Portfolio',
+  title: 'Blake Campbell | Senior Engineer',
   description:
-    'Blake Campbell — Senior Full Stack Engineer focused on frontend, Vue/Nuxt, product systems, and practical UX.',
-  ogTitle: 'Blake Campbell Portfolio',
+    'Blake Campbell is a Senior Engineer focused on performance, reliability, and high-quality user experiences.',
+  ogTitle: 'Blake Campbell | Senior Engineer',
   ogDescription:
-    'Senior Full Stack Engineer focused on frontend, Vue/Nuxt, product systems, and practical UX.',
-  ogUrl: 'https://blakecampbell.com',
+    'Portfolio, work history, and practical engineering approach from Blake Campbell.',
+  ogUrl: canonical,
   ogType: 'website',
-  twitterCard: 'summary_large_image'
+  ogSiteName: 'Blake Campbell',
+  ogImage,
+  twitterCard: 'summary_large_image',
+  twitterImage: ogImage
 })
 
 useHead({
+  link: [{ rel: 'canonical', href: canonical }],
   script: [
     {
       type: 'application/ld+json',
@@ -21,9 +30,23 @@ useHead({
         '@context': 'https://schema.org',
         '@type': 'Person',
         name: 'Blake Campbell',
-        url: 'https://blakecampbell.com',
-        jobTitle: 'Senior Full Stack Engineer',
+        url: siteUrl,
+        sameAs: [
+          altSiteUrl,
+          'https://www.linkedin.com/in/blake-campbell/',
+          'https://github.com/BlakeCampbells'
+        ],
+        jobTitle: 'Senior Engineer',
         knowsAbout: ['Vue', 'Nuxt', 'Frontend Engineering', 'Cypress', 'Rails API']
+      })
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'Blake Campbell',
+        url: siteUrl
       })
     }
   ]

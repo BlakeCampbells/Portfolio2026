@@ -7,6 +7,7 @@ export type WorkItem = {
   logo?: string
   stack: string[]
   summary: string
+  caseStudy?: string
   details: string[]
   kind: 'core' | 'side'
   siteUrl?: string
@@ -137,6 +138,8 @@ export const coreWorkItems: WorkItem[] = [
     logo: '/logos/argonne.svg',
     stack: ['React.js', 'TypeScript', 'Full-Stack Development'],
     summary: 'Senior software engineering role focused on full-stack delivery.',
+    caseStudy:
+      'At Argonne, I’m modernizing legacy Ruby on Rails applications that had drifted outside end-of-life support. I’ve focused on upgrading framework versions, improving code quality, and preparing front-end transitions from ExtJS4 to modern React.js. I also support mission-critical systems, including projects tied to nuclear waste workflows. The result has been faster, more reliable applications with noticeably better usability and maintainability.',
     details: [
       'Build and maintain production web software.',
       'Work primarily in React.js and TypeScript.',
