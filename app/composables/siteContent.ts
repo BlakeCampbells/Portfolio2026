@@ -176,6 +176,8 @@ export const coreWorkItems: WorkItem[] = [
     stack: ['JavaScript', 'Ruby on Rails', 'Ruby', 'Vue.js', 'Nuxt.js'],
     summary:
       'Led client delivery across multiple projects including operations and assessment platforms.',
+    caseStudy:
+      'BenefitMany was a software development company focused on helping small businesses run better internal operations. We supported a wide mix of partners, including a law office, a print apparel company, a nonprofit serving victims of domestic abuse, and an insurance company that later brought our team in for a larger software initiative. The core challenge was that many small businesses need custom software tailored to their exact workflows. I led frontend development and UX across these projects, usually using Vue/Nuxt with a Ruby on Rails API. The outcome was strong partner trust and practical software that helped clients grow with more confidence and less operational friction.',
     details: [
       'Built software for property assessment and inspection workflows.',
       'Delivered manufacturing operations tooling for in-house process management.',
