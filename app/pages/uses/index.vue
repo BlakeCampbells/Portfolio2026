@@ -2,9 +2,47 @@
 const { usesCategories } = useSiteContent()
 const [computerSetup, deskAudio, software, carryItems, other] = usesCategories
 
+const siteUrl = 'https://blakecampbell.com'
+const canonical = `${siteUrl}/uses`
+const ogImage = `${siteUrl}/images/blake-headshot.jpg`
+
 useSeoMeta({
-  title: 'Uses',
-  description: 'Desk setup, headphones, software, and the everyday gear behind my work.'
+  title: 'Uses | Blake Campbell',
+  description: 'Desk setup, headphones, software, and the everyday gear behind my work.',
+  ogTitle: 'Uses | Blake Campbell',
+  ogDescription: 'Desk setup, headphones, software, and the everyday gear behind my work.',
+  ogUrl: canonical,
+  ogType: 'website',
+  ogSiteName: 'Blake Campbell',
+  ogImage,
+  twitterCard: 'summary_large_image',
+  twitterImage: ogImage
+})
+
+useHead({
+  link: [{ rel: 'canonical', href: canonical }],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'Uses | Blake Campbell',
+        url: canonical
+      })
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+          { '@type': 'ListItem', position: 2, name: 'Uses', item: canonical }
+        ]
+      })
+    }
+  ]
 })
 </script>
 

@@ -1,9 +1,41 @@
 <script setup lang="ts">
 const { coreWorkItems, sideProjects } = useSiteContent()
 
+const siteUrl = 'https://blakecampbell.com'
+const canonical = `${siteUrl}/work`
+const ogImage = `${siteUrl}/images/blake-headshot.jpg`
+
 useSeoMeta({
-  title: 'Work',
-  description: 'Selected work by Blake Campbell across product engineering, frontend systems, and delivery.'
+  title: 'Work | Blake Campbell',
+  description: 'Selected work by Blake Campbell across product engineering, frontend systems, and delivery.',
+  ogTitle: 'Work | Blake Campbell',
+  ogDescription: 'Selected work by Blake Campbell across product engineering, frontend systems, and delivery.',
+  ogUrl: canonical,
+  ogType: 'website',
+  ogSiteName: 'Blake Campbell',
+  ogImage,
+  twitterCard: 'summary_large_image',
+  twitterImage: ogImage
+})
+
+useHead({
+  link: [{ rel: 'canonical', href: canonical }],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Blake Campbell Work History',
+        itemListElement: [...coreWorkItems, ...sideProjects].map((item, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          url: `${siteUrl}/work/${item.slug}`,
+          name: item.name
+        }))
+      })
+    }
+  ]
 })
 </script>
 

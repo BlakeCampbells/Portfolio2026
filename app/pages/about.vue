@@ -1,11 +1,38 @@
 <script setup lang="ts">
 const { about } = useSiteContent()
 
+const siteUrl = 'https://blakecampbell.com'
+const canonical = `${siteUrl}/about`
+const ogImage = `${siteUrl}/images/blake-headshot.jpg`
+
 useSeoMeta({
-  title: 'About',
+  title: 'About | Blake Campbell',
   description: about.bio,
-  ogTitle: 'About · Blake Campbell',
-  ogDescription: about.bio
+  ogTitle: 'About | Blake Campbell',
+  ogDescription: about.bio,
+  ogUrl: canonical,
+  ogType: 'profile',
+  ogSiteName: 'Blake Campbell',
+  ogImage,
+  twitterCard: 'summary_large_image',
+  twitterImage: ogImage
+})
+
+useHead({
+  link: [{ rel: 'canonical', href: canonical }],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+          { '@type': 'ListItem', position: 2, name: 'About', item: canonical }
+        ]
+      })
+    }
+  ]
 })
 </script>
 

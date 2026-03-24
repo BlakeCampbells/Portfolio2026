@@ -2,15 +2,45 @@
 const route = useRoute()
 const { workItems } = useSiteContent()
 
+const siteUrl = 'https://blakecampbell.com'
 const item = computed(() => workItems.find((w) => w.slug === route.params.slug))
 
 if (!item.value) {
   throw createError({ statusCode: 404, statusMessage: 'Work item not found' })
 }
 
+const canonical = `${siteUrl}/work/${item.value.slug}`
+const ogImage = `${siteUrl}/images/blake-headshot.jpg`
+
 useSeoMeta({
-  title: `${item.value.name} · Work`,
-  description: item.value.summary
+  title: `${item.value.name} | Blake Campbell`,
+  description: item.value.summary,
+  ogTitle: `${item.value.name} | Blake Campbell`,
+  ogDescription: item.value.summary,
+  ogUrl: canonical,
+  ogType: 'article',
+  ogSiteName: 'Blake Campbell',
+  ogImage,
+  twitterCard: 'summary_large_image',
+  twitterImage: ogImage
+})
+
+useHead({
+  link: [{ rel: 'canonical', href: canonical }],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+          { '@type': 'ListItem', position: 2, name: 'Work', item: `${siteUrl}/work` },
+          { '@type': 'ListItem', position: 3, name: item.value.name, item: canonical }
+        ]
+      })
+    }
+  ]
 })
 </script>
 
@@ -66,6 +96,11 @@ useSeoMeta({
 
     <section class="tile color blue" aria-hidden="true" />
 
+    <section v-if="item.caseStudy" class="tile span-2">
+      <h2>Case Study</h2>
+      <p class="case-study">{{ item.caseStudy }}</p>
+    </section>
+
     <section class="tile span-2">
       <h2>What I handled</h2>
       <ul>
@@ -113,6 +148,7 @@ useSeoMeta({
 }
 .site-link:hover { color: #111; }
 ul { margin: 0; padding-left: 1rem; line-height: 1.6; }
+.case-study { margin: 0; line-height: 1.65; }
 .company-logo {
   position: absolute;
   bottom: 1.1rem;

@@ -20,7 +20,6 @@ export default defineNuxtConfig({
         { name: 'theme-color', content: '#111111' }
       ],
       link: [
-        { rel: 'canonical', href: 'https://blakecampbell.com' },
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'alternate icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'manifest', href: '/site.webmanifest' }
