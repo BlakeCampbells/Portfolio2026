@@ -157,6 +157,8 @@ export const coreWorkItems: WorkItem[] = [
     stack: ['TypeScript', 'Full-Stack Development'],
     summary:
       'Built web applications to review machine-learning data and provide model feedback for AI/ML teams.',
+    caseStudy:
+      'At Apple, I supported internal machine-learning workflows by building tooling around support conversations and intent mapping. The team used this to understand where customer experiences could improve and to guide higher-level business decisions. A major challenge was delivering an ML-driven experience that still felt human and high quality. I helped structure and map the intent tree, supported rollout work across languages and locales, and contributed to data visualization patterns that made insights more actionable. The outcome was stronger customer-experience focus, clearer decision-making signals, and deep practical exposure to production ML systems.',
     details: [
       'Worked closely with AI and Machine Learning teams.',
       'Built web tooling to review ML training and evaluation data.',
