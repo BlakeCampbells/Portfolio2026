@@ -1,26 +1,14 @@
 <script setup lang="ts">
 const { usesCategories } = useSiteContent()
 const [computerSetup, deskAudio, software, carryItems, other] = usesCategories
-
-const siteUrl = 'https://blakecampbell.com'
-const canonical = `${siteUrl}/uses`
-const ogImage = `${siteUrl}/images/blake-headshot.jpg`
-
-useSeoMeta({
-  title: 'Uses | Blake Campbell',
-  description: 'Desk setup, headphones, software, and the everyday gear behind my work.',
-  ogTitle: 'Uses | Blake Campbell',
-  ogDescription: 'Desk setup, headphones, software, and the everyday gear behind my work.',
-  ogUrl: canonical,
-  ogType: 'website',
-  ogSiteName: 'Blake Campbell',
-  ogImage,
-  twitterCard: 'summary_large_image',
-  twitterImage: ogImage
+const { canonical, siteUrl } = usePortfolioSeo({
+  path: '/uses',
+  title: 'Blake Campbell Uses | Desk Setup, Software, and Gear',
+  description:
+    'See the desk setup, software, headphones, and daily gear Blake Campbell uses for software engineering, writing, and focused product work.'
 })
 
 useHead({
-  link: [{ rel: 'canonical', href: canonical }],
   script: [
     {
       type: 'application/ld+json',

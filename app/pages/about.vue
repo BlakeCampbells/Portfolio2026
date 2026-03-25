@@ -1,26 +1,25 @@
 <script setup lang="ts">
 const { about } = useSiteContent()
-
-const siteUrl = 'https://blakecampbell.com'
-const canonical = `${siteUrl}/about`
-const ogImage = `${siteUrl}/images/blake-headshot.jpg`
-
-useSeoMeta({
-  title: 'About | Blake Campbell',
-  description: about.bio,
-  ogTitle: 'About | Blake Campbell',
-  ogDescription: about.bio,
-  ogUrl: canonical,
-  ogType: 'profile',
-  ogSiteName: 'Blake Campbell',
-  ogImage,
-  twitterCard: 'summary_large_image',
-  twitterImage: ogImage
+const { canonical, siteUrl } = usePortfolioSeo({
+  path: '/about',
+  title: 'About Blake Campbell | Senior Software Engineer',
+  description:
+    'Learn about Blake Campbell, a Pittsburgh-based senior software engineer with 10+ years of experience across frontend, full-stack delivery, product thinking, and reliable execution.',
+  type: 'profile'
 })
 
 useHead({
-  link: [{ rel: 'canonical', href: canonical }],
   script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'AboutPage',
+        name: 'About Blake Campbell',
+        url: canonical,
+        description: about.bio
+      })
+    },
     {
       type: 'application/ld+json',
       innerHTML: JSON.stringify({

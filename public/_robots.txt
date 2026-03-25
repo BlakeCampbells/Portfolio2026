@@ -1,2 +1,5 @@
 User-Agent: *
-Disallow:
+Allow: /
+
+Sitemap: https://blakecampbell.com/sitemap.xml
+Host: blakecampbell.com

@@ -1,26 +1,25 @@
 <script setup lang="ts">
 const { coreWorkItems, sideProjects } = useSiteContent()
-
-const siteUrl = 'https://blakecampbell.com'
-const canonical = `${siteUrl}/work`
-const ogImage = `${siteUrl}/images/blake-headshot.jpg`
-
-useSeoMeta({
-  title: 'Work | Blake Campbell',
-  description: 'Selected work by Blake Campbell across product engineering, frontend systems, and delivery.',
-  ogTitle: 'Work | Blake Campbell',
-  ogDescription: 'Selected work by Blake Campbell across product engineering, frontend systems, and delivery.',
-  ogUrl: canonical,
-  ogType: 'website',
-  ogSiteName: 'Blake Campbell',
-  ogImage,
-  twitterCard: 'summary_large_image',
-  twitterImage: ogImage
+const { canonical, siteUrl } = usePortfolioSeo({
+  path: '/work',
+  title: 'Work by Blake Campbell | Software Engineering Portfolio',
+  description:
+    'Explore software engineering work by Blake Campbell across Apple, Argonne National Laboratory, BenefitMany, open source, and independent product projects.'
 })
 
 useHead({
-  link: [{ rel: 'canonical', href: canonical }],
   script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'Work by Blake Campbell',
+        url: canonical,
+        description:
+          'Portfolio of work history, case studies, and product engineering projects by Blake Campbell.'
+      })
+    },
     {
       type: 'application/ld+json',
       innerHTML: JSON.stringify({

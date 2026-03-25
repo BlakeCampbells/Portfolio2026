@@ -1,28 +1,13 @@
 <script setup lang="ts">
 const { about, coreWorkItems, sideProjects, aboutMeFun } = useSiteContent()
-
-const siteUrl = 'https://blakecampbell.com'
-const altSiteUrl = 'https://blakec.xyz'
-const canonical = `${siteUrl}/`
-const ogImage = `${siteUrl}/images/blake-headshot.jpg`
-
-useSeoMeta({
-  title: 'Blake Campbell | Senior Engineer',
+const { canonical, siteUrl } = usePortfolioSeo({
+  path: '/',
+  title: 'Blake Campbell | Senior Software Engineer',
   description:
-    'Blake Campbell is a Senior Engineer focused on performance, reliability, and high-quality user experiences.',
-  ogTitle: 'Blake Campbell | Senior Engineer',
-  ogDescription:
-    'Portfolio, work history, and practical engineering approach from Blake Campbell.',
-  ogUrl: canonical,
-  ogType: 'website',
-  ogSiteName: 'Blake Campbell',
-  ogImage,
-  twitterCard: 'summary_large_image',
-  twitterImage: ogImage
+    'Blake Campbell is a senior software engineer in Pittsburgh building performant, reliable web products with React, Vue, Nuxt, TypeScript, and strong product execution.'
 })
 
 useHead({
-  link: [{ rel: 'canonical', href: canonical }],
   script: [
     {
       type: 'application/ld+json',
@@ -32,12 +17,32 @@ useHead({
         name: 'Blake Campbell',
         url: siteUrl,
         sameAs: [
-          altSiteUrl,
           'https://www.linkedin.com/in/blake-campbell/',
           'https://github.com/BlakeCampbells'
         ],
-        jobTitle: 'Senior Engineer',
-        knowsAbout: ['Vue', 'Nuxt', 'Frontend Engineering', 'Cypress', 'Rails API']
+        image: `${siteUrl}/images/blake-headshot.jpg`,
+        jobTitle: 'Senior Software Engineer',
+        description:
+          'Senior software engineer focused on frontend systems, performance, reliability, and practical product delivery.',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Pittsburgh',
+          addressRegion: 'PA',
+          addressCountry: 'US'
+        },
+        worksFor: {
+          '@type': 'Organization',
+          name: 'Argonne National Laboratory'
+        },
+        knowsAbout: [
+          'React',
+          'Vue',
+          'Nuxt',
+          'TypeScript',
+          'Frontend Engineering',
+          'Product Engineering',
+          'Ruby on Rails'
+        ]
       })
     },
     {
@@ -46,7 +51,23 @@ useHead({
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         name: 'Blake Campbell',
-        url: siteUrl
+        url: siteUrl,
+        description:
+          'Portfolio, work history, and engineering background for Blake Campbell.'
+      })
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ProfilePage',
+        name: 'Blake Campbell',
+        url: canonical,
+        mainEntity: {
+          '@type': 'Person',
+          name: 'Blake Campbell',
+          url: siteUrl
+        }
       })
     }
   ]

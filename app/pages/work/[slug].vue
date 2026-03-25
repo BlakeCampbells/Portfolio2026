@@ -1,16 +1,20 @@
 <script setup lang="ts">
 const route = useRoute()
 const { workItems } = useSiteContent()
-
-const siteUrl = 'https://blakecampbell.com'
 const item = computed(() => workItems.find((w) => w.slug === route.params.slug))
 
 if (!item.value) {
   throw createError({ statusCode: 404, statusMessage: 'Work item not found' })
 }
 
-const canonical = `${siteUrl}/work/${item.value.slug}`
-const ogImage = `${siteUrl}/images/blake-headshot.jpg`
+const { canonical, siteUrl } = usePortfolioSeo({
+  path: `/work/${item.value.slug}`,
+  title: `${item.value.name} | Blake Campbell Portfolio`,
+  description: `${item.value.summary} ${item.value.role} experience from Blake Campbell.`
+    .replace(/\s+/g, ' ')
+    .trim(),
+  type: 'article'
+})
 
 const caseStudyParagraphs = computed(() => {
   const text = item.value?.caseStudy?.trim()
@@ -29,22 +33,29 @@ const caseStudyParagraphs = computed(() => {
   return chunks
 })
 
-useSeoMeta({
-  title: `${item.value.name} | Blake Campbell`,
-  description: item.value.summary,
-  ogTitle: `${item.value.name} | Blake Campbell`,
-  ogDescription: item.value.summary,
-  ogUrl: canonical,
-  ogType: 'article',
-  ogSiteName: 'Blake Campbell',
-  ogImage,
-  twitterCard: 'summary_large_image',
-  twitterImage: ogImage
-})
-
 useHead({
-  link: [{ rel: 'canonical', href: canonical }],
   script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ProfilePage',
+        name: `${item.value.name} | Blake Campbell`,
+        url: canonical,
+        description: item.value.summary,
+        mainEntity: {
+          '@type': 'CreativeWork',
+          name: item.value.name,
+          creator: {
+            '@type': 'Person',
+            name: 'Blake Campbell',
+            url: siteUrl
+          },
+          about: item.value.stack,
+          url: canonical
+        }
+      })
+    },
     {
       type: 'application/ld+json',
       innerHTML: JSON.stringify({
