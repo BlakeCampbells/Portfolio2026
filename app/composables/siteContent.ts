@@ -137,12 +137,12 @@ export const coreWorkItems: WorkItem[] = [
     location: 'Lemont, Illinois, United States · Remote',
     logo: '/logos/argonne.svg',
     stack: ['React.js', 'TypeScript', 'Full-Stack Development'],
-    summary: 'Senior software engineering role focused on full-stack delivery.',
+    summary: 'Senior software engineering role focused on full-stack delivery and modernization.',
     caseStudy:
       'At Argonne, I’m modernizing legacy Ruby on Rails applications that had drifted outside end-of-life support. I’ve focused on upgrading framework versions, improving code quality, and preparing front-end transitions from ExtJS4 to modern React.js. I also support mission-critical systems, including projects tied to nuclear waste workflows. The result has been faster, more reliable applications with noticeably better usability and maintainability.',
     details: [
-      'Build and maintain production web software.',
-      'Work primarily in React.js and TypeScript.',
+      'Build and modernize legacy Ruby on Rails applications.',
+      'Work primarily in React.js / TypeScript / Ruby on Rails.',
       'Deliver full-stack features with a focus on reliability and clarity.'
     ],
     kind: 'core'
@@ -160,8 +160,8 @@ export const coreWorkItems: WorkItem[] = [
     caseStudy:
       'At Apple, I supported internal machine-learning workflows by building tooling around support conversations and intent mapping. The team used this to understand where customer experiences could improve and to guide higher-level business decisions. A major challenge was delivering an ML-driven experience that still felt human and high quality. I helped structure and map the intent tree, supported rollout work across languages and locales, and contributed to data visualization patterns that made insights more actionable. The outcome was stronger customer-experience focus, clearer decision-making signals, and deep practical exposure to production ML systems.',
     details: [
-      'Worked closely with AI and Machine Learning teams.',
-      'Built web tooling to review ML training and evaluation data.',
+      'Worked closely with AI and Machine Learning teams to provide conversational flow data',
+      'Built web tooling to review ML training and evaluation data to improve model quality.',
       'Implemented feedback workflows used to improve model quality.'
     ],
     kind: 'core'
@@ -175,13 +175,13 @@ export const coreWorkItems: WorkItem[] = [
     logo: '/logos/benefitmany.png',
     stack: ['JavaScript', 'Ruby on Rails', 'Ruby', 'Vue.js', 'Nuxt.js'],
     summary:
-      'Led client delivery across multiple projects including operations and assessment platforms.',
+      'Led client delivery across multiple projects for small businesses and nonprofits.',
     caseStudy:
       'BenefitMany was a software development company focused on helping small businesses run better internal operations. We supported a wide mix of partners, including a law office, a print apparel company, a nonprofit serving victims of domestic abuse, and an insurance company that later brought our team in for a larger software initiative. The core challenge was that many small businesses need custom software tailored to their exact workflows. I led frontend development and UX across these projects, usually using Vue/Nuxt with a Ruby on Rails API. The outcome was strong partner trust and practical software that helped clients grow with more confidence and less operational friction.',
     details: [
       'Built software for property assessment and inspection workflows.',
-      'Delivered manufacturing operations tooling for in-house process management.',
-      'Helped nonprofits and small businesses with practical, maintainable software.',
+      'Delivered manufacturing operations tooling for in-house process management for a print apparel company.',
+      'Helped nonprofits and small businesses with practical, maintainable software for a nonprofit serving victims of domestic abuse.',
       'Acted as partner-level engineering lead across parallel projects.'
     ],
     kind: 'core'
@@ -195,7 +195,7 @@ export const coreWorkItems: WorkItem[] = [
     logo: '/logos/propelicy.svg',
     stack: ['Vue.js', 'Nuxt.js', 'Ruby on Rails', 'Rspec', 'JavaScript'],
     summary:
-      'Built a robust Nuxt application backed by a Rails API as lead frontend developer.',
+      'Built a robust Insurance Application using Vue.js / Nuxt.js and a Rails API as lead frontend developer.',
     caseStudy:
       'Propelicy was built to help insurance agents and agencies handle certification and registration for different policies in one place. The core problem was fragmentation: agents were juggling policy requirements and provider processes across disconnected systems. As cofounder and frontend lead, I owned the product experience for the central dashboard, focusing on clear workflow design and reliable day-to-day usability. I built the frontend on Vue/Nuxt with a Rails API backend and helped shape features that made policy onboarding easier to track. The result was a successful regional platform that supported growth through new policy types and additional insurance providers.',
     details: [
@@ -214,7 +214,7 @@ export const coreWorkItems: WorkItem[] = [
     logo: '/logos/mortarstone.svg',
     stack: ['AngularJS', 'Ruby on Rails', 'Node.js'],
     summary:
-      'Built and maintained a donor analytics web platform for churches and nonprofits.',
+      'Built and maintained a donor analytics web platform for churches and nonprofits using AngularJS 1.x and Ruby on Rails.',
     caseStudy:
       'MortarStone helps churches and nonprofits understand donor behavior and keep leadership teams informed with better fundraising visibility. A key challenge during my time there was moving beyond older jQuery-era frontend patterns while continuing to support active product needs. As a frontend developer, I worked in AngularJS 1.x and helped modernize the UI architecture while integrating with existing backend services. The outcome was a more maintainable analytics product and clearer donor insight workflows for nonprofit and church leadership teams.',
     details: [
