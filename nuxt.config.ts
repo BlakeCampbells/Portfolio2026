@@ -70,6 +70,9 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    routeRules: {
+      '/works': { redirect: '/work' }
+    },
     prerender: {
       routes: [
         '/',
