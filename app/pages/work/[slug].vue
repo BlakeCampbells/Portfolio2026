@@ -39,7 +39,7 @@ useHead({
       type: 'application/ld+json',
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'ProfilePage',
+        '@type': 'WebPage',
         name: `${item.value.name} | Blake Campbell`,
         url: canonical,
         description: item.value.summary,
