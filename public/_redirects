@@ -1,0 +1,6 @@
+http://blakecampbell.com/* https://blakecampbell.com/:splat 301!
+https://www.blakecampbell.com/* https://blakecampbell.com/:splat 301!
+/about/ /about 301!
+/uses/ /uses 301!
+/work/ /work 301!
+/work/:slug/ /work/:slug 301!
