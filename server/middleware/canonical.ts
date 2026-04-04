@@ -3,16 +3,24 @@ import { sendRedirect } from 'h3'
 const CANONICAL_HOST = 'blakecampbell.com'
 const CANONICAL_ORIGIN = `https://${CANONICAL_HOST}`
 
+function getForwardedValue(value?: string) {
+  return value?.split(',')[0]?.trim().toLowerCase() || ''
+}
+
+function normalizeHost(value: string) {
+  return value.replace(/:443$|:80$/i, '')
+}
+
 export default defineEventHandler((event) => {
   const url = getRequestURL(event)
   const pathname = url.pathname
   const normalizedPath =
     pathname.length > 1 && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname
 
-  const forwardedHost = getRequestHeader(event, 'x-forwarded-host')
-  const forwardedProto = getRequestHeader(event, 'x-forwarded-proto')
-  const host = (forwardedHost || url.host).toLowerCase()
-  const proto = (forwardedProto || url.protocol.replace(':', '')).toLowerCase()
+  const forwardedHost = getForwardedValue(getRequestHeader(event, 'x-forwarded-host'))
+  const forwardedProto = getForwardedValue(getRequestHeader(event, 'x-forwarded-proto'))
+  const host = normalizeHost(forwardedHost || url.host.toLowerCase())
+  const proto = forwardedProto || url.protocol.replace(':', '').toLowerCase()
 
   const needsHostRedirect = host !== CANONICAL_HOST || proto !== 'https'
   const needsPathRedirect = normalizedPath !== pathname
@@ -24,6 +32,15 @@ export default defineEventHandler((event) => {
   const redirectUrl = new URL(CANONICAL_ORIGIN)
   redirectUrl.pathname = normalizedPath
   redirectUrl.search = url.search
+
+  const currentUrl = new URL(url.toString())
+  currentUrl.pathname = normalizedPath
+  currentUrl.host = host
+  currentUrl.protocol = `${proto || 'https'}:`
+
+  if (redirectUrl.toString() === currentUrl.toString()) {
+    return
+  }
 
   return sendRedirect(event, redirectUrl.toString(), 301)
 })
