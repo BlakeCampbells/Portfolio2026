@@ -2,6 +2,7 @@ import { sendRedirect } from 'h3'
 
 const CANONICAL_HOST = 'blakecampbell.com'
 const CANONICAL_ORIGIN = `https://${CANONICAL_HOST}`
+const PREVIEW_HOST_SUFFIX = '.workers.dev'
 
 function getForwardedValue(value?: string) {
   return value?.split(',')[0]?.trim().toLowerCase() || ''
@@ -21,8 +22,9 @@ export default defineEventHandler((event) => {
   const forwardedProto = getForwardedValue(getRequestHeader(event, 'x-forwarded-proto'))
   const host = normalizeHost(forwardedHost || url.host.toLowerCase())
   const proto = forwardedProto || url.protocol.replace(':', '').toLowerCase()
+  const isPreviewHost = host.endsWith(PREVIEW_HOST_SUFFIX)
 
-  const needsHostRedirect = host !== CANONICAL_HOST || proto !== 'https'
+  const needsHostRedirect = !isPreviewHost && (host !== CANONICAL_HOST || proto !== 'https')
   const needsPathRedirect = normalizedPath !== pathname
 
   if (!needsHostRedirect && !needsPathRedirect) {
