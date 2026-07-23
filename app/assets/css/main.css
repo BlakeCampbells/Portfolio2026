@@ -4,6 +4,7 @@
   --red: #d72d2d;
   --blue: #1f54c7;
   --yellow: #f3c623;
+  --motion-snap: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 * { box-sizing: border-box; }
@@ -13,7 +14,7 @@ body,
 #__nuxt {
   margin: 0;
   min-height: 100%;
-  background: var(--paper);
+  background: var(--ink);
   color: var(--ink);
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
@@ -63,7 +64,11 @@ a {
   min-width: 0;
   padding: 0 0.65rem;
   background: #f7f4ef;
-  transition: background-color 120ms ease, color 120ms ease;
+  transform: translateY(0);
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 180ms var(--motion-snap);
 }
 
 .top-nav-inner a[data-accent='red']:hover,
@@ -97,14 +102,171 @@ a {
 .nav-color-block-blue { background: var(--blue); }
 .nav-color-block-yellow { background: var(--yellow); }
 
+.nav-color-block {
+  transform-origin: left center;
+  animation: nav-block-in 460ms var(--motion-snap) backwards;
+}
+
+.nav-color-block-red { animation-delay: 40ms; }
+.nav-color-block-blue { animation-delay: 100ms; }
+.nav-color-block-yellow { animation-delay: 160ms; }
+
 .external-mark {
   margin-left: 0.35rem;
   font-size: 0.8em;
   line-height: 1;
+  transition: transform 180ms var(--motion-snap);
 }
 
 main {
   padding-top: 0;
+}
+
+/*
+ * Motion follows the same grammar as the layout: rectangular tiles arrive in
+ * a short stagger, while the primary-color fields wipe in from alternating
+ * sides like panels being fitted into the grid.
+ */
+.mondrian > .tile,
+.mondrian-page > .tile {
+  animation: tile-in 480ms var(--motion-snap) backwards;
+}
+
+.mondrian > .tile:nth-child(2),
+.mondrian-page > .tile:nth-child(2) { animation-delay: 45ms; }
+
+.mondrian > .tile:nth-child(3),
+.mondrian-page > .tile:nth-child(3) { animation-delay: 90ms; }
+
+.mondrian > .tile:nth-child(4),
+.mondrian-page > .tile:nth-child(4) { animation-delay: 135ms; }
+
+.mondrian > .tile:nth-child(5),
+.mondrian-page > .tile:nth-child(5) { animation-delay: 180ms; }
+
+.mondrian > .tile:nth-child(6),
+.mondrian-page > .tile:nth-child(6) { animation-delay: 225ms; }
+
+.mondrian > .tile:nth-child(7),
+.mondrian-page > .tile:nth-child(7) { animation-delay: 270ms; }
+
+.mondrian > .tile:nth-child(8),
+.mondrian-page > .tile:nth-child(8) { animation-delay: 315ms; }
+
+.mondrian > .tile:nth-child(9),
+.mondrian-page > .tile:nth-child(9) { animation-delay: 360ms; }
+
+.mondrian > .tile[aria-hidden='true'],
+.mondrian-page > .tile[aria-hidden='true'] {
+  --wipe-left: 0;
+  --wipe-right: 100%;
+  animation-name: color-block-in;
+  transition: transform 220ms var(--motion-snap), filter 220ms ease;
+}
+
+.mondrian > .tile[aria-hidden='true']:nth-child(even),
+.mondrian-page > .tile[aria-hidden='true']:nth-child(even) {
+  --wipe-left: 100%;
+  --wipe-right: 0;
+}
+
+.mondrian h2::after,
+.mondrian-page h2::after {
+  content: '';
+  display: block;
+  width: 3rem;
+  height: 5px;
+  margin-top: 0.35rem;
+  background: linear-gradient(
+    90deg,
+    var(--red) 0 33.333%,
+    var(--blue) 33.333% 66.666%,
+    var(--yellow) 66.666% 100%
+  );
+  transform-origin: left center;
+  animation: accent-line-in 420ms 240ms var(--motion-snap) backwards;
+}
+
+.headshot {
+  transition:
+    transform 220ms var(--motion-snap),
+    box-shadow 220ms var(--motion-snap);
+}
+
+.page-enter-active {
+  transition: opacity 180ms ease, transform 240ms var(--motion-snap);
+}
+
+.page-leave-active {
+  transition: opacity 110ms ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.page-leave-to {
+  opacity: 0;
+}
+
+@keyframes tile-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes color-block-in {
+  from {
+    opacity: 0;
+    clip-path: inset(0 var(--wipe-right) 0 var(--wipe-left));
+  }
+}
+
+@keyframes accent-line-in {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes nav-block-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+}
+
+@media (hover: hover) {
+  .top-nav-inner a:hover {
+    transform: translateY(-2px);
+  }
+
+  .top-nav-inner a:hover .external-mark {
+    transform: translate(2px, -2px);
+  }
+
+  .mondrian > .tile[aria-hidden='true']:hover,
+  .mondrian-page > .tile[aria-hidden='true']:hover {
+    transform: scale(0.975);
+    filter: saturate(1.12);
+  }
+
+  .headshot:hover {
+    transform: rotate(-2deg) translateY(-2px);
+    box-shadow: 5px 5px 0 var(--red), 9px 9px 0 var(--blue);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @media (max-width: 760px) {
