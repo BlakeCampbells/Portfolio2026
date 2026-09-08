@@ -67,7 +67,8 @@ export const about = {
   headshot: '/images/blake-headshot.jpg'
 }
 
-export const usesCategories: UsesCategory[] = [
+// The Uses layout renders these five categories in fixed positions.
+export const usesCategories: [UsesCategory, UsesCategory, UsesCategory, UsesCategory, UsesCategory] = [
   {
     title: 'Computer Setup',
     items: [

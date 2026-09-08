@@ -13,6 +13,7 @@ export default defineNuxtConfig({
       mode: 'out-in'
     },
     head: {
+      htmlAttrs: { lang: 'en' },
       titleTemplate: '%s · Blake Campbell',
       meta: [
         { charset: 'utf-8' },
@@ -37,7 +38,7 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-        { rel: 'alternate icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'manifest', href: '/site.webmanifest' },
         { rel: 'me', href: 'https://github.com/BlakeCampbells' },
         { rel: 'me', href: 'https://www.linkedin.com/in/blake-campbell/' }
@@ -45,19 +46,15 @@ export default defineNuxtConfig({
     }
   },
 
-  runtimeConfig: {
-    public: {
-      siteUrl: 'https://blakecampbell.com'
-    }
-  },
-
   site: {
     url: 'https://blakecampbell.com',
-    name: 'Blake Campbell'
+    name: 'Blake Campbell',
+    trailingSlash: false
   },
 
   sitemap: {
-    autoLastmod: true,
+    // Build timestamps aren't content modification dates.
+    autoLastmod: false,
     urls: [
       '/',
       '/about',
