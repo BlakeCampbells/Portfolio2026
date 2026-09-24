@@ -78,8 +78,8 @@ useHead({
   <main class="mondrian">
     <section class="tile intro">
       <img :src="about.headshot" alt="Headshot of Blake Campbell" class="headshot" />
-      <p class="eyebrow">Blake Campbell</p>
-      <h1>Senior Software Engineer</h1>
+      <p class="eyebrow">Pittsburgh, PA</p>
+      <h1>Blake Campbell <span>Senior Software Engineer</span></h1>
       <p>
         I build reliable products across the stack, with an eye for clear interfaces and
         thoughtful user experiences.
@@ -104,7 +104,7 @@ useHead({
       <h2>Work</h2>
       <ul>
         <li v-for="job in coreWorkItems" :key="job.slug">
-          <NuxtLink :to="`/work/${job.slug}`" class="item-link">
+          <NuxtLink :to="`/work/${job.slug}/`" class="item-link">
             <strong>{{ job.name }}</strong>
             <small class="years">{{ job.years }}</small>
             <span>{{ job.role }}</span>
@@ -119,7 +119,7 @@ useHead({
       <h2>Projects</h2>
       <ul>
         <li v-for="project in sideProjects" :key="project.slug">
-          <NuxtLink :to="`/work/${project.slug}`" class="item-link">
+          <NuxtLink :to="`/work/${project.slug}/`" class="item-link">
             <span class="project-title">
               <img v-if="project.logo" :src="project.logo" alt="" class="project-icon" />
               <strong>{{ project.name }}</strong>
@@ -246,6 +246,7 @@ ul { margin: 0; padding-left: 1rem; }
 }
 .eyebrow { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; margin: 0; }
 h1 { margin: 0.5rem 0 0.75rem; font-size: clamp(1.7rem, 4.8vw, 3.8rem); line-height: 0.95; }
+h1 span { display: block; margin-top: .35rem; font-size: .65em; line-height: 1.1; }
 p { margin: 0; }
 .small { opacity: 0.75; margin-top: 0.5rem; }
 

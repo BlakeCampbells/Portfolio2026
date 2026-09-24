@@ -2,6 +2,7 @@ export type WorkItem = {
   slug: string
   name: string
   role: string
+  seoTitle?: string
   years: string
   location: string
   logo?: string
@@ -141,13 +142,13 @@ export const coreWorkItems: WorkItem[] = [
     stack: ['React.js', 'TypeScript', 'Ruby on Rails', 'Playwright'],
     summary: 'Updating legacy applications and raising test coverage to at least 80% before deployment.',
     caseStudy:
-      'At Argonne, I work on at least five legacy applications, including a nuclear-waste monitoring system. We added test pipelines that check each application against an 80% coverage requirement before deployment, and I brought Playwright into end-to-end testing. I also helped build React components shared across internal apps and run demos on Copilot, Claude, and OpenAI for other developers.',
+      'At Argonne, I work on 5+ legacy applications, including a nuclear-waste monitoring system. We added test pipelines that check each application against an 80% coverage requirement before deployment, and I brought Playwright into end-to-end testing. I also helped build React components shared across internal apps and run demos on Copilot, Claude, and OpenAI for other developers.',
     decisionAndResult: {
       decision: 'Check coverage separately for each application before it ships.',
       result: 'Legacy apps that started with little test coverage now meet the 80% threshold for deployment.'
     },
     details: [
-      'Update at least five legacy apps, including a nuclear-waste monitoring system.',
+      'Update 5+ legacy apps, including a nuclear-waste monitoring system.',
       'Build React components that can be reused across internal applications.',
       'Add test pipelines that require 80% coverage per application before deployment.',
       'Use Playwright for end-to-end tests of legacy workflows.',
@@ -184,6 +185,7 @@ export const coreWorkItems: WorkItem[] = [
   {
     slug: 'propelicy',
     name: 'Propelicy',
+    seoTitle: 'Propelicy Insurance Certification Software | Blake Campbell',
     role: 'Senior Software Developer & Founder',
     years: 'Oct 2020–Aug 2021',
     location: 'United States · Remote',
@@ -233,6 +235,7 @@ export const coreWorkItems: WorkItem[] = [
   {
     slug: 'mortarstone',
     name: 'MortarStone',
+    seoTitle: 'MortarStone Donor Analytics Software | Blake Campbell',
     role: 'Full Stack Developer',
     years: 'Sep 2014–Dec 2017',
     location: 'Reno, Nevada, United States',
@@ -257,22 +260,32 @@ export const coreWorkItems: WorkItem[] = [
 
 export const sideProjects: WorkItem[] = [
   {
-    slug: 'ai-plays-pokemon',
-    name: 'AI Plays Pokémon',
-    role: 'Creator',
-    years: 'In progress',
+    slug: 'uses-tech',
+    name: 'uses.tech',
+    role: 'Core Maintainer',
+    years: '2021–Present',
     location: 'Pittsburgh, Pennsylvania, United States',
-    logo: '/logos/ai-plays-pokemon.png',
-    siteUrl: 'https://aiplaypokemon.com',
-    stack: ['Python', 'PyBoy', 'Machine Learning'],
+    logo: '/logos/uses-tech.svg',
+    stack: ['Remix', 'React', 'TypeScript', 'Netlify'],
     summary:
-      'Training my own machine-learning models in Python to play classic Pokémon games with PyBoy.',
+      'Core maintainer of uses.tech, an open-source directory with 1,000+ individual contributors.',
     caseStudy:
-      'AI Plays Pokémon is an ongoing experiment in training my own machine-learning models to play classic Game Boy Pokémon games. I use Python to develop and train the models, and PyBoy to run the games and connect model decisions to gameplay.',
+      'Uses.tech collects developers’ /uses pages so people can see the tools and setups behind their work. I have been a core maintainer since 2021, reviewing pull requests, handling issues, and removing broken or outdated links. More than 1,000 people have contributed to the project.',
     details: [
-      'Develop and train custom machine-learning models in Python.',
-      'Use PyBoy to run the games and test model-driven gameplay.',
-      'Iterate on training as the models learn to play.'
+      'Core maintainer of uses.tech (awesome-uses), an open-source project with 1,000+ contributors.',
+      'Reviews pull requests and issues as developers add and update their /uses pages.',
+      'Removes broken links and outdated entries to keep the directory useful.',
+      'Has handled day-to-day upkeep with the maintainer team since 2021.'
+    ],
+    links: [
+      {
+        label: 'uses.tech',
+        href: 'https://uses.tech'
+      },
+      {
+        label: 'GitHub',
+        href: 'https://github.com/wesbos/awesome-uses'
+      }
     ],
     kind: 'side'
   },
@@ -324,31 +337,22 @@ export const sideProjects: WorkItem[] = [
     kind: 'side'
   },
   {
-    slug: 'uses-tech',
-    name: 'uses.tech',
-    role: 'Core Maintainer',
-    years: '2021–Present',
+    slug: 'ai-plays-pokemon',
+    name: 'AI Plays Pokémon',
+    role: 'Creator',
+    years: 'Jul 2026–Present',
     location: 'Pittsburgh, Pennsylvania, United States',
-    stack: ['Remix', 'React', 'TypeScript', 'Netlify'],
+    logo: '/logos/ai-plays-pokemon.png',
+    siteUrl: 'https://aiplaypokemon.com',
+    stack: ['Python', 'PyBoy', 'Machine Learning'],
     summary:
-      'Core maintainer of uses.tech, an open-source directory with 1,000+ individual contributors.',
+      'Training my own machine-learning models in Python to play classic Pokémon games with PyBoy.',
     caseStudy:
-      'Uses.tech collects developers’ /uses pages so people can see the tools and setups behind their work. I have been a core maintainer since 2021, reviewing pull requests, handling issues, and removing broken or outdated links. More than 1,000 people have contributed to the project.',
+      'AI Plays Pokémon is an ongoing experiment in training my own machine-learning models to play classic Game Boy Pokémon games. I use Python to develop and train the models, and PyBoy to run the games and connect model decisions to gameplay.',
     details: [
-      'Core maintainer of uses.tech (awesome-uses), an open-source project with 1,000+ contributors.',
-      'Reviews pull requests and issues as developers add and update their /uses pages.',
-      'Removes broken links and outdated entries to keep the directory useful.',
-      'Has handled day-to-day upkeep with the maintainer team since 2021.'
-    ],
-    links: [
-      {
-        label: 'uses.tech',
-        href: 'https://uses.tech'
-      },
-      {
-        label: 'GitHub',
-        href: 'https://github.com/wesbos/awesome-uses'
-      }
+      'Develop and train custom machine-learning models in Python.',
+      'Use PyBoy to run the games and test model-driven gameplay.',
+      'Iterate on training as the models learn to play.'
     ],
     kind: 'side'
   },
@@ -358,7 +362,6 @@ export const sideProjects: WorkItem[] = [
     role: 'Primary Frontend Developer',
     years: 'Project',
     location: 'Pittsburgh, Pennsylvania, United States',
-    logo: '/logos/manycomm.svg',
     stack: ['Vue', 'WebSockets', 'Rails API'],
     summary:
       'Anonymous text and chat for people seeking help—born from a partnership with a local domestic abuse hotline.',
@@ -375,10 +378,10 @@ export const sideProjects: WorkItem[] = [
   {
     slug: 'experian-data-dictionary',
     name: 'Experian Data Dictionary',
+    seoTitle: 'Experian Data Dictionary Ruby Gem | Blake Campbell',
     role: 'Open Source Project',
     years: '2015',
     location: 'United States',
-    logo: '/logos/experian.svg',
     stack: ['Ruby', 'RubyGems'],
     summary:
       "Ruby gem for Experian's data dictionary API and docs—built for open source users; 20,000+ downloads. Finished release, stable legacy.",

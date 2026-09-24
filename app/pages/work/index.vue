@@ -29,7 +29,7 @@ useHead({
         itemListElement: [...coreWorkItems, ...sideProjects].map((item, index) => ({
           '@type': 'ListItem',
           position: index + 1,
-          url: `${siteUrl}/work/${item.slug}`,
+          url: `${siteUrl}/work/${item.slug}/`,
           name: item.name
         }))
       })
@@ -53,7 +53,7 @@ useHead({
       <h2>Core Work</h2>
       <ul class="list">
         <li v-for="item in coreWorkItems" :key="item.slug" class="row">
-          <NuxtLink :to="`/work/${item.slug}`" class="row-link">
+          <NuxtLink :to="`/work/${item.slug}/`" class="row-link">
             <h3>{{ item.name }}</h3>
             <p class="role">{{ item.role }}</p>
             <p class="meta">{{ item.years }} · {{ item.location }}</p>
@@ -72,7 +72,7 @@ useHead({
       <h2>Projects</h2>
       <ul class="list">
         <li v-for="item in sideProjects" :key="item.slug" class="row">
-          <NuxtLink :to="`/work/${item.slug}`" class="row-link">
+          <NuxtLink :to="`/work/${item.slug}/`" class="row-link">
             <div class="project-heading">
               <img v-if="item.logo" :src="item.logo" alt="" class="project-icon" />
               <h3>{{ item.name }}</h3>

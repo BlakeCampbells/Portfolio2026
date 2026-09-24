@@ -20,22 +20,22 @@ The TypeScript checker uses TypeScript 6.0.x: vue-tsc 3.3.11 cannot load TypeScr
 
 ## Sitemap and Search Console
 
-The canonical origin is `https://blakecampbell.com`. Page URLs omit trailing slashes except for `/`; internal links, canonical tags, Open Graph URLs, and sitemap entries agree. The sitemap contains the four main pages and all ten work/project pages. The existing `/works` redirect remains unchanged.
+The canonical origin is `https://blakecampbell.com`. Page URLs use trailing slashes; internal links, canonical tags, Open Graph URLs, and sitemap entries agree with the URLs served by the static host. The sitemap contains the four main pages and all eleven work/project pages. `/works` redirects to `/work/`.
 
-`npm run check:seo` checks actual generated output for route coverage, duplicate sitemap entries, canonical and Open Graph URLs, titles/descriptions, language, robots metadata, structured-data JSON, and robots.txt. Run it after `build` or `generate`; it does not query Google or verify hosting configuration.
+`npm run check:seo` checks actual generated output for route coverage, duplicate sitemap entries, canonical and Open Graph URLs, internal page links, titles/descriptions, language, robots metadata, structured-data JSON, and robots.txt. Run it after `build` or `generate`; it does not query Google or verify hosting configuration.
 
 Automatic `lastmod` values are disabled because build timestamps do not represent meaningful changes to content. Add dates only when actual content modification dates are tracked. See [Google's sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap#additional-notes-about-xml-sitemaps).
 
-The September 8, 2026 Search Console screenshot lists trailing-slash variants as **Alternate page with proper canonical tag**. This is consistent with the site's deliberate no-trailing-slash canonicals. [Google describes this status as an alternate whose canonical is recognized](https://support.google.com/webmasters/answer/7440203#duplicate_page_with_proper_canonical_tag); it does not by itself mean that the canonical page has an indexing problem. Use URL Inspection to confirm Google's selected canonical and its index status.
+The September 24, 2026 Search Console export lists 12 indexed URLs, 11 alternate URLs with proper canonicals, five 404s, and two crawled but unindexed URLs. Live navigation of `/about` and `/work/propelicy` landed on trailing-slash URLs, so this update aligns canonical and sitemap URLs with that hosting behavior. [Google describes an alternate with a proper canonical as a recognized duplicate](https://support.google.com/webmasters/answer/7440203#duplicate_page_with_proper_canonical_tag); it does not by itself mean the canonical page has an indexing problem. The two crawled but unindexed examples are `/work/propelicy` and `/sitemap.xml`. An XML sitemap is for discovery and does not need a search result listing. Inspect the Propelicy page's Google-selected canonical and live fetch after deployment.
 
 The public audit on September 8 received a Cloudflare `403` managed challenge for `/work/` and `/sitemap.xml`. Public `/robots.txt` was readable and allowed search crawling, with the correct sitemap reference. A challenge to this audit client does **not** establish that Googlebot is challenged; actual Google access remains unverified.
 
 After deployment:
 
 1. Use Search Console's **Sitemaps** report to check that `https://blakecampbell.com/sitemap.xml` is fetched successfully. Submit that address if it is not already submitted.
-2. Inspect canonical pages such as `https://blakecampbell.com/work/manycomm` and `https://blakecampbell.com/uses`; confirm Google's selected canonical matches and check whether they are indexed. Use **Test live URL** to check current fetch/render access.
-3. Inspect one reported trailing-slash variant and confirm it points to the corresponding canonical. Expected alternate URLs do not need independent indexing. Request indexing only for intended canonical pages that need it.
+2. Inspect canonical pages such as `https://blakecampbell.com/work/propelicy/` and `https://blakecampbell.com/uses/`; confirm Google's selected canonical matches and check whether they are indexed. Use **Test live URL** to check current fetch/render access.
+3. Inspect one reported no-trailing-slash variant and confirm it redirects to the corresponding canonical. Expected alternate URLs do not need independent indexing. Request indexing only for intended canonical pages that need it.
 4. If Google's live test or sitemap fetch is challenged, review Cloudflare security events for verified Google crawler requests and adjust only the rule causing the challenge. The local application changes do not change Cloudflare settings.
-5. If redirect consolidation is desired later, first confirm the hosting platform's slash behavior; any permanent redirect should lead to a canonical URL that returns 200 without a reverse redirect. Prior canonical redirect middleware was deliberately removed from this repository, so this maintenance update preserves that behavior.
+5. Open the five 404 examples in the Search Console issue details. Redirect only old URLs with a relevant replacement page; leave genuinely missing URLs as 404s.
 
-An existing validation run is visible in the screenshot. Wait for its result rather than restarting it while it is pending. No Search Console submission, validation, hosting change, or deployment is performed by this code update.
+No Search Console submission, validation, hosting change, or deployment is performed by this code update.

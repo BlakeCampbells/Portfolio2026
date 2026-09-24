@@ -16,7 +16,8 @@ export const seoConfig = {
 }
 
 export const usePortfolioSeo = ({ path, title, description, type = 'website' }: SeoPageInput) => {
-  const canonical = new URL(path, `${SITE_URL}/`).toString()
+  const canonicalPath = path === '/' ? '/' : `${path.replace(/\/+$/, '')}/`
+  const canonical = new URL(canonicalPath, `${SITE_URL}/`).toString()
 
   useSeoMeta({
     title,

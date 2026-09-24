@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     },
     head: {
       htmlAttrs: { lang: 'en' },
-      titleTemplate: '%s · Blake Campbell',
+      titleTemplate: '%s',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -49,7 +49,7 @@ export default defineNuxtConfig({
   site: {
     url: 'https://blakecampbell.com',
     name: 'Blake Campbell',
-    trailingSlash: false
+    trailingSlash: true
   },
 
   sitemap: {
@@ -57,10 +57,10 @@ export default defineNuxtConfig({
     autoLastmod: false,
     urls: [
       '/',
-      '/about',
-      '/work',
-      '/uses',
-      ...[...coreWorkItems, ...sideProjects].map(item => `/work/${item.slug}`)
+      '/about/',
+      '/work/',
+      '/uses/',
+      ...[...coreWorkItems, ...sideProjects].map(item => `/work/${item.slug}/`)
     ]
   },
 
@@ -72,15 +72,15 @@ export default defineNuxtConfig({
 
   nitro: {
     routeRules: {
-      '/works': { redirect: '/work' }
+      '/works': { redirect: '/work/' }
     },
     prerender: {
       routes: [
         '/',
-        '/about',
-        '/work',
-        '/uses',
-        ...[...coreWorkItems, ...sideProjects].map(item => `/work/${item.slug}`),
+        '/about/',
+        '/work/',
+        '/uses/',
+        ...[...coreWorkItems, ...sideProjects].map(item => `/work/${item.slug}/`),
         '/sitemap.xml',
         '/robots.txt'
       ]

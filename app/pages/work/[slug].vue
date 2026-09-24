@@ -9,7 +9,7 @@ if (!item.value) {
 
 const { canonical, siteUrl } = usePortfolioSeo({
   path: `/work/${item.value.slug}`,
-  title: `${item.value.name} | Blake Campbell Portfolio`,
+  title: item.value.seoTitle ?? `${item.value.name} | Blake Campbell Portfolio`,
   description: `${item.value.summary} ${item.value.role} experience from Blake Campbell.`
     .replace(/\s+/g, ' ')
     .trim(),
@@ -63,7 +63,7 @@ useHead({
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
-          { '@type': 'ListItem', position: 2, name: 'Work', item: `${siteUrl}/work` },
+          { '@type': 'ListItem', position: 2, name: 'Work', item: `${siteUrl}/work/` },
           { '@type': 'ListItem', position: 3, name: item.value.name, item: canonical }
         ]
       })

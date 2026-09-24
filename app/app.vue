@@ -9,10 +9,10 @@ const { profile } = useSiteContent()
     <header class="top-nav">
       <nav class="top-nav-inner" aria-label="Primary navigation">
         <NuxtLink to="/" data-accent="red">Home</NuxtLink>
-        <NuxtLink to="/about" data-accent="blue">About</NuxtLink>
-        <NuxtLink to="/work" data-accent="yellow">Work</NuxtLink>
+        <NuxtLink to="/about/" data-accent="blue">About</NuxtLink>
+        <NuxtLink to="/work/" data-accent="yellow">Work</NuxtLink>
         <span class="nav-color-block nav-color-block-red" aria-hidden="true" />
-        <NuxtLink to="/uses" data-accent="red">Uses</NuxtLink>
+        <NuxtLink to="/uses/" data-accent="red">Uses</NuxtLink>
         <a
           :href="profile.linkedin"
           data-accent="blue"
