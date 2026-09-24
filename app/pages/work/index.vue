@@ -59,7 +59,7 @@ useHead({
             <p class="meta">{{ item.years }} · {{ item.location }}</p>
             <p>{{ item.summary }}</p>
             <ul class="highlights">
-              <li v-for="detail in item.details.slice(0, 2)" :key="detail">{{ detail }}</li>
+              <li v-for="detail in item.details.slice(0, 3)" :key="detail">{{ detail }}</li>
             </ul>
           </NuxtLink>
         </li>
@@ -73,7 +73,10 @@ useHead({
       <ul class="list">
         <li v-for="item in sideProjects" :key="item.slug" class="row">
           <NuxtLink :to="`/work/${item.slug}`" class="row-link">
-            <h3>{{ item.name }}</h3>
+            <div class="project-heading">
+              <img v-if="item.logo" :src="item.logo" alt="" class="project-icon" />
+              <h3>{{ item.name }}</h3>
+            </div>
             <p class="role">{{ item.role }}</p>
             <p class="meta">{{ item.years }} · {{ item.location }}</p>
             <p>{{ item.summary }}</p>
@@ -156,6 +159,9 @@ useHead({
 h1,h2,h3 { margin-top: 0; }
 h3 { text-align: center; font-size: .98rem; margin-bottom: .08rem; }
 h2 { font-size: 0.92rem; text-transform: uppercase; letter-spacing: .04em; margin-bottom: .45rem; }
+.project-heading { display: flex; align-items: center; justify-content: center; gap: .45rem; }
+.project-heading h3 { margin: 0; }
+.project-icon { width: 28px; height: 28px; flex: none; object-fit: contain; border-radius: 5px; }
 
 @media (max-width: 900px) {
   .mondrian-page { grid-template-columns: 1fr; grid-template-rows: auto; }

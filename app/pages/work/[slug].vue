@@ -125,14 +125,18 @@ useHead({
     <section class="tile color blue" aria-hidden="true" />
 
     <section v-if="item.caseStudy" class="tile span-2">
-      <h2>Case Study</h2>
+      <h2>The Work</h2>
       <p v-for="(paragraph, idx) in caseStudyParagraphs" :key="idx" class="case-study">
         {{ paragraph }}
       </p>
+      <div v-if="item.decisionAndResult" class="decision-result">
+        <p><strong>Decision</strong> {{ item.decisionAndResult.decision }}</p>
+        <p><strong>Result</strong> {{ item.decisionAndResult.result }}</p>
+      </div>
     </section>
 
     <section class="tile span-2">
-      <h2>What I handled</h2>
+      <h2>What I Did</h2>
       <ul>
         <li v-for="point in item.details" :key="point">{{ point }}</li>
       </ul>
@@ -180,6 +184,9 @@ useHead({
 ul { margin: 0; padding-left: 1rem; line-height: 1.6; }
 .case-study { margin: 0 0 .8rem; line-height: 1.65; }
 .case-study:last-of-type { margin-bottom: 0; }
+.decision-result { display: grid; gap: .5rem; margin-top: 1rem; padding-top: .8rem; border-top: 2px solid #111; }
+.decision-result p { margin: 0; line-height: 1.5; }
+.decision-result strong { margin-right: .4rem; font-size: .8rem; letter-spacing: .04em; text-transform: uppercase; }
 .company-logo {
   position: absolute;
   bottom: 1.1rem;

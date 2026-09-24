@@ -79,10 +79,10 @@ useHead({
     <section class="tile intro">
       <img :src="about.headshot" alt="Headshot of Blake Campbell" class="headshot" />
       <p class="eyebrow">Blake Campbell</p>
-      <h1>Senior Engineer<br />Frontend focus</h1>
+      <h1>Senior Software Engineer</h1>
       <p>
-        Senior Engineer focused on performance, reliability, and delivering high quality
-        user experiences.
+        I build reliable products across the stack, with an eye for clear interfaces and
+        thoughtful user experiences.
       </p>
     </section>
 
@@ -91,9 +91,10 @@ useHead({
     <section class="tile about">
       <h2>Proof Points</h2>
       <ul class="proof-points">
-        <li>Shipped work across Apple + Argonne + startup environments</li>
-        <li>10+ years building production software applications</li>
-        <li>Open-source to help the developer community</li>
+        <li>Modernizing nuclear-waste monitoring software at Argonne National Laboratory</li>
+        <li>Built tools to classify millions of Apple chatbot conversations</li>
+        <li>Led a remote team of eight at BenefitMany</li>
+        <li>Maintain uses.tech, an open-source project with 1,000+ individual contributors</li>
       </ul>
     </section>
 
@@ -119,7 +120,10 @@ useHead({
       <ul>
         <li v-for="project in sideProjects" :key="project.slug">
           <NuxtLink :to="`/work/${project.slug}`" class="item-link">
-            <strong>{{ project.name }}</strong>
+            <span class="project-title">
+              <img v-if="project.logo" :src="project.logo" alt="" class="project-icon" />
+              <strong>{{ project.name }}</strong>
+            </span>
             <small class="years">{{ project.years }}</small>
             <span>{{ project.summary }}</span>
           </NuxtLink>
@@ -215,6 +219,10 @@ ul { margin: 0; padding-left: 1rem; }
 .item-link:hover * {
   color: inherit;
 }
+
+.project-title { display: flex; align-items: center; gap: 0.45rem; }
+.project-title strong { font-size: 1rem; }
+.project-icon { width: 28px; height: 28px; flex: none; object-fit: contain; border-radius: 5px; }
 
 .work span, .projects span { font-size: 0.92rem; }
 .proof-points { display: grid; gap: 0.55rem; }

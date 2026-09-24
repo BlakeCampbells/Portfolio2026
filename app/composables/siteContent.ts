@@ -8,6 +8,7 @@ export type WorkItem = {
   stack: string[]
   summary: string
   caseStudy?: string
+  decisionAndResult?: { decision: string; result: string }
   details: string[]
   kind: 'core' | 'side'
   siteUrl?: string
@@ -138,14 +139,19 @@ export const coreWorkItems: WorkItem[] = [
     location: 'Lemont, Illinois, United States · Remote',
     logo: '/logos/argonne.svg',
     stack: ['React.js', 'TypeScript', 'Ruby on Rails', 'Playwright'],
-    summary: 'Modernizing 5+ legacy applications and improving shared UI and testing practices.',
+    summary: 'Updating legacy applications and raising test coverage to at least 80% before deployment.',
     caseStudy:
-      'At Argonne, I modernize at least five end-of-life applications, including a nuclear-waste monitoring system. I help standardize reusable React UI patterns, establish Playwright end-to-end testing, and lead adoption of AI development tools through demos and developer support.',
+      'At Argonne, I work on at least five legacy applications, including a nuclear-waste monitoring system. We added test pipelines that check each application against an 80% coverage requirement before deployment, and I brought Playwright into end-to-end testing. I also helped build React components shared across internal apps and run demos on Copilot, Claude, and OpenAI for other developers.',
+    decisionAndResult: {
+      decision: 'Check coverage separately for each application before it ships.',
+      result: 'Legacy apps that started with little test coverage now meet the 80% threshold for deployment.'
+    },
     details: [
-      'Modernize 5+ end-of-life applications, including nuclear-waste monitoring.',
-      'Standardize reusable React components across internal applications.',
-      'Establish Playwright end-to-end testing practices.',
-      'Lead AI tool adoption through demos, Q&A, and developer support.'
+      'Update at least five legacy apps, including a nuclear-waste monitoring system.',
+      'Build React components that can be reused across internal applications.',
+      'Add test pipelines that require 80% coverage per application before deployment.',
+      'Use Playwright for end-to-end tests of legacy workflows.',
+      'Run demos and Q&A sessions on Copilot, Claude, and OpenAI for developers.'
     ],
     kind: 'core'
   },
@@ -158,14 +164,20 @@ export const coreWorkItems: WorkItem[] = [
     logo: '/logos/apple.svg',
     stack: ['Vue.js', 'Node.js', 'TypeScript', 'Jest'],
     summary:
-      'Built internal tools for reviewing chat history and machine-learning predictions.',
+      'Built tools to explore and classify millions of chatbot conversations from 26 locales and 7 languages.',
     caseStudy:
-      'At Apple, I built tools for reviewing chat history and evaluating machine-learning predictions used globally. A chat-history review app was selected as a top-10 project from 150 submissions at an internal data science conference. I also introduced Jest and ESLint and owned features from design through delivery.',
+      'Apple’s chatbot teams had collected millions of conversations from 26 locales in 7 languages. I built tools that let them explore that data and classify utterances through both automation and human review. One chat-history app was selected among the top 10 of 150 submissions at an internal data science conference. I also built a tool for reviewing model predictions and added Jest and ESLint to the development workflow.',
+    decisionAndResult: {
+      decision: 'Give teams a way to inspect conversations and review both automated and human classifications.',
+      result: 'Teams worldwide could review and classify conversations from 26 locales in 7 languages.'
+    },
     details: [
-      'Built a chat-history review app recognized at an internal data science conference.',
-      'Streamlined review and evaluation of ML model predictions.',
-      'Introduced Jest and ESLint to improve code quality.',
-      'Partnered with business and data science teams from design through delivery.'
+      'Built a chat-history app selected in the top 10 of 150 internal submissions.',
+      'Helped teams explore conversations from 26 locales and 7 languages.',
+      'Built automated classification and human review workflows.',
+      'Built a separate tool for reviewing model predictions.',
+      'Added Jest and ESLint while following Apple’s design, security, and engineering standards.',
+      'Worked with business and data science teams from design through delivery.'
     ],
     kind: 'core'
   },
@@ -178,32 +190,43 @@ export const coreWorkItems: WorkItem[] = [
     logo: '/logos/propelicy.svg',
     stack: ['Vue.js', 'Nuxt.js', 'Ruby on Rails', 'Rspec', 'JavaScript'],
     summary:
-      'Built an insurance onboarding platform for agents and national carriers.',
+      'Made it easier for insurance agents to manage carrier certifications and stay current.',
     caseStudy:
-      'At Propelicy, I led frontend development for an insurance platform that streamlined agent onboarding for national carriers. I moved the frontend from Vue to Nuxt, built a reusable Storybook component library, and established unit and end-to-end testing.',
+      'Insurance agents had to deal with a separate certification process for each carrier. At Propelicy, I built the frontend for an app that brought those steps and reminders into one place. The product covered carriers including Kaiser Permanente, Aetna, and UnitedHealthcare. I moved the frontend from Vue to Nuxt, built shared components in Storybook, and added unit and end-to-end tests.',
+    decisionAndResult: {
+      decision: 'Put carrier certification steps, status, and reminders in one place.',
+      result: 'Agents could keep track of what they needed to do for each carrier and keep their certifications active.'
+    },
     details: [
-      'Built onboarding flows for agents working with national carriers.',
-      'Migrated the frontend from Vue to Nuxt.',
-      'Created a Storybook design system and automated test coverage.'
+      'Built certification and reminder workflows for insurance agents.',
+      'Moved the frontend from Vue to Nuxt.',
+      'Created shared components in Storybook.',
+      'Added unit and end-to-end tests.'
     ],
     kind: 'core'
   },
   {
     slug: 'benefitmany',
-    name: 'BenefitMany LLC',
+    name: 'BenefitMany',
     role: 'Lead Frontend Engineer & Founder',
     years: 'Oct 2017–Oct 2020',
     location: 'Reno, Nevada, United States',
     logo: '/logos/benefitmany.png',
     stack: ['JavaScript', 'Ruby on Rails', 'Ruby', 'Vue.js', 'Nuxt.js'],
     summary:
-      'Founded a consultancy delivering applications for small businesses and nonprofits.',
+      'Built internal tools and customer-facing apps for small businesses and nonprofits.',
     caseStudy:
-      'At BenefitMany, I led a remote team of eight delivering software for small businesses and nonprofits. We built MVPs and automated manual workflows for clients in domestic-violence support, apparel, and education, helping nonprofits focus more resources on their missions.',
+      'I co-founded BenefitMany to build software for small businesses and nonprofits. One apparel client needed to keep up with growing work orders across multiple shifts, so we built a work-order system for them. We also built MVPs and replaced manual processes for clients in domestic-violence support and education. I led a remote team of eight and worked directly with clients on planning and delivery.',
+    decisionAndResult: {
+      decision: 'Build around the work each client needed to manage every day.',
+      result: 'The apparel client could handle more work orders across multiple shifts.'
+    },
     details: [
-      'Founded a consultancy serving small businesses and nonprofits.',
-      'Built MVPs and automated manual client workflows.',
-      'Led a remote team of eight across delivery, planning, and stakeholder communication.'
+      'Co-founded a consultancy serving small businesses and nonprofits.',
+      'Built work-order software for an apparel business operating across multiple shifts.',
+      'Built MVPs and replaced manual steps for nonprofit clients.',
+      'Led an eight-person remote team through planning, development, and delivery.',
+      'Worked directly with clients on requirements and priorities.'
     ],
     kind: 'core'
   },
@@ -216,13 +239,17 @@ export const coreWorkItems: WorkItem[] = [
     logo: '/logos/mortarstone.svg',
     stack: ['AngularJS', 'Ruby on Rails', 'Node.js'],
     summary:
-      'Built and maintained a donor analytics web platform for churches and nonprofits using AngularJS 1.x and Ruby on Rails.',
+      'Worked on donor analytics software for churches and nonprofits.',
     caseStudy:
-      'MortarStone helps churches and nonprofits understand donor behavior and keep leadership teams informed with better fundraising visibility. A key challenge during my time there was moving beyond older jQuery-era frontend patterns while continuing to support active product needs. As a frontend developer, I worked in AngularJS 1.x and helped modernize the UI architecture while integrating with existing backend services. The outcome was a more maintainable analytics product and clearer donor insight workflows for nonprofit and church leadership teams.',
+      'At MortarStone, I worked on a donor analytics product for churches and nonprofits. The frontend still relied on older jQuery patterns, so I helped move parts of it to AngularJS while keeping the existing reports running. I also worked with the Rails and Node services behind those reports.',
+    decisionAndResult: {
+      decision: 'Move new frontend work to AngularJS while supporting the existing product.',
+      result: 'The reporting UI became easier to maintain without interrupting the donor analytics work.'
+    },
     details: [
-      'Developed and supported full-stack financial analytics features.',
-      'Worked across AngularJS frontend and Rails/Node backend services.',
-      'Shipped stable product improvements over a multi-year span.'
+      'Built and maintained donor reporting features.',
+      'Worked in AngularJS, Rails, and Node.',
+      'Helped replace older jQuery patterns in the frontend.'
     ],
     kind: 'core'
   }
@@ -230,8 +257,28 @@ export const coreWorkItems: WorkItem[] = [
 
 export const sideProjects: WorkItem[] = [
   {
+    slug: 'ai-plays-pokemon',
+    name: 'AI Plays Pokémon',
+    role: 'Creator',
+    years: 'In progress',
+    location: 'Pittsburgh, Pennsylvania, United States',
+    logo: '/logos/ai-plays-pokemon.png',
+    siteUrl: 'https://aiplaypokemon.com',
+    stack: ['Python', 'PyBoy', 'Machine Learning'],
+    summary:
+      'Training my own machine-learning models in Python to play classic Pokémon games with PyBoy.',
+    caseStudy:
+      'AI Plays Pokémon is an ongoing experiment in training my own machine-learning models to play classic Game Boy Pokémon games. I use Python to develop and train the models, and PyBoy to run the games and connect model decisions to gameplay.',
+    details: [
+      'Develop and train custom machine-learning models in Python.',
+      'Use PyBoy to run the games and test model-driven gameplay.',
+      'Iterate on training as the models learn to play.'
+    ],
+    kind: 'side'
+  },
+  {
     slug: 'awardwentto',
-    name: 'awardwentto.com',
+    name: 'Award Went To',
     role: 'Creator',
     years: '2025–Present',
     location: 'Pittsburgh, Pennsylvania, United States',
@@ -241,7 +288,7 @@ export const sideProjects: WorkItem[] = [
     summary:
       'Oscar-themed data visualizations of nominees and winners over time, plus prediction sheets and bingo for the upcoming ceremony.',
     caseStudy:
-      'AwardWentTo started from a simple personal request: my wife wanted a better way to visualize Oscar winners over time, including how ratings and runtime relate to results. I built the site in Nuxt to make Academy Awards history easier to explore and more fun to interact with. Beyond charts, the product includes Oscar bingo, year-by-year rundowns of nominees and winners, and historical category timeline data. The outcome is a polished, data-driven fan experience that blends utility and entertainment for awards season.',
+      'Award Went To started from a simple personal request: my wife wanted a better way to visualize Oscar winners over time, including how ratings and runtime relate to results. I built the site in Nuxt to make Academy Awards history easier to explore and more fun to interact with. Beyond charts, the product includes Oscar bingo, year-by-year rundowns of nominees and winners, and historical category timeline data. The outcome is a polished, data-driven fan experience that blends utility and entertainment for awards season.',
     details: [
       'Built interactive views of Academy Awards history across nominees and winners.',
       'Tracks patterns like winner context by runtime and ratings trends.',
@@ -256,7 +303,7 @@ export const sideProjects: WorkItem[] = [
     role: 'Creator',
     years: '2024–Present',
     location: 'Pittsburgh, Pennsylvania, United States',
-    logo: '/logos/snapremark.svg',
+    logo: '/logos/snapremark.png',
     stack: ['Swift', 'iOS'],
     summary:
       'Solo iOS side project: a social game for friends and family, written in Swift—live on the App Store.',
@@ -279,19 +326,19 @@ export const sideProjects: WorkItem[] = [
   {
     slug: 'uses-tech',
     name: 'uses.tech',
-    role: 'Primary Maintainer',
+    role: 'Core Maintainer',
     years: '2021–Present',
     location: 'Pittsburgh, Pennsylvania, United States',
     stack: ['Remix', 'React', 'TypeScript', 'Netlify'],
     summary:
-      'Community hub for /uses pages—where developers share gear, software, stacks, and personal sites. Primary maintainer since 2021.',
+      'Core maintainer of uses.tech, an open-source directory with 1,000+ individual contributors.',
     caseStudy:
-      'Uses.tech is an open source project built for developers to share their setups, workflows, and languages through /uses pages. As a maintainer for the past three years, I handle daily pull requests, content updates, and repo hygiene work. A key part of the job is keeping the directory trustworthy by removing lapsed links and purging stale entries. The outcome is a cleaner, more reliable community resource that stays useful for developers looking to learn from each other’s tooling and workflows.',
+      'Uses.tech collects developers’ /uses pages so people can see the tools and setups behind their work. I have been a core maintainer since 2021, reviewing pull requests, handling issues, and removing broken or outdated links. More than 1,000 people have contributed to the project.',
     details: [
-      'Primary maintainer on the open source project behind uses.tech (awesome-uses): reviewing PRs, triage, and keeping the directory healthy.',
-      'Supports contributors adding their own /uses pages and discovering how others work.',
-      'Removes broken links and prunes stale data to keep quality high for readers.',
-      'Active since 2021—merges, releases, and day-to-day upkeep alongside the rest of the maintainer team.'
+      'Core maintainer of uses.tech (awesome-uses), an open-source project with 1,000+ contributors.',
+      'Reviews pull requests and issues as developers add and update their /uses pages.',
+      'Removes broken links and outdated entries to keep the directory useful.',
+      'Has handled day-to-day upkeep with the maintainer team since 2021.'
     ],
     links: [
       {
