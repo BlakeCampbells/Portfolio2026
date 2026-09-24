@@ -133,18 +133,19 @@ export const coreWorkItems: WorkItem[] = [
   {
     slug: 'argonne-national-laboratory',
     name: 'Argonne National Laboratory',
-    role: 'Senior Software Engineer',
+    role: 'Senior Full Stack Engineer',
     years: 'Aug 2024–Present',
     location: 'Lemont, Illinois, United States · Remote',
     logo: '/logos/argonne.svg',
-    stack: ['React.js', 'TypeScript', 'Full-Stack Development'],
-    summary: 'Senior software engineering role focused on full-stack delivery and modernization.',
+    stack: ['React.js', 'TypeScript', 'Ruby on Rails', 'Playwright'],
+    summary: 'Modernizing 5+ legacy applications and improving shared UI and testing practices.',
     caseStudy:
-      'At Argonne, I’m modernizing legacy Ruby on Rails applications that had drifted outside end-of-life support. I’ve focused on upgrading framework versions, improving code quality, and preparing front-end transitions from ExtJS4 to modern React.js. I also support mission-critical systems, including projects tied to nuclear waste workflows. The result has been faster, more reliable applications with noticeably better usability and maintainability.',
+      'At Argonne, I modernize at least five end-of-life applications, including a nuclear-waste monitoring system. I help standardize reusable React UI patterns, establish Playwright end-to-end testing, and lead adoption of AI development tools through demos and developer support.',
     details: [
-      'Build and modernize legacy Ruby on Rails applications.',
-      'Work primarily in React.js / TypeScript / Ruby on Rails.',
-      'Deliver full-stack features with a focus on reliability and clarity.'
+      'Modernize 5+ end-of-life applications, including nuclear-waste monitoring.',
+      'Standardize reusable React components across internal applications.',
+      'Establish Playwright end-to-end testing practices.',
+      'Lead AI tool adoption through demos, Q&A, and developer support.'
     ],
     kind: 'core'
   },
@@ -155,54 +156,54 @@ export const coreWorkItems: WorkItem[] = [
     years: 'Oct 2021–Sep 2024',
     location: 'Cupertino, California, United States · Remote',
     logo: '/logos/apple.svg',
-    stack: ['TypeScript', 'Full-Stack Development'],
+    stack: ['Vue.js', 'Node.js', 'TypeScript', 'Jest'],
     summary:
-      'Built web applications to review machine-learning data and provide model feedback for AI/ML teams.',
+      'Built internal tools for reviewing chat history and machine-learning predictions.',
     caseStudy:
-      'At Apple, I supported internal machine-learning workflows by building tooling around support conversations and intent mapping. The team used this to understand where customer experiences could improve and to guide higher-level business decisions. A major challenge was delivering an ML-driven experience that still felt human and high quality. I helped structure and map the intent tree, supported rollout work across languages and locales, and contributed to data visualization patterns that made insights more actionable. The outcome was stronger customer-experience focus, clearer decision-making signals, and deep practical exposure to production ML systems.',
+      'At Apple, I built tools for reviewing chat history and evaluating machine-learning predictions used globally. A chat-history review app was selected as a top-10 project from 150 submissions at an internal data science conference. I also introduced Jest and ESLint and owned features from design through delivery.',
     details: [
-      'Worked closely with AI and Machine Learning teams to provide conversational flow data',
-      'Built web tooling to review ML training and evaluation data to improve model quality.',
-      'Implemented feedback workflows used to improve model quality.'
-    ],
-    kind: 'core'
-  },
-  {
-    slug: 'benefitmany',
-    name: 'BenefitMany LLC',
-    role: 'Senior Developer and Partner',
-    years: 'Oct 2017–Oct 2021',
-    location: 'Reno, Nevada, United States',
-    logo: '/logos/benefitmany.png',
-    stack: ['JavaScript', 'Ruby on Rails', 'Ruby', 'Vue.js', 'Nuxt.js'],
-    summary:
-      'Led client delivery across multiple projects for small businesses and nonprofits.',
-    caseStudy:
-      'BenefitMany was a software development company focused on helping small businesses run better internal operations. We supported a wide mix of partners, including a law office, a print apparel company, a nonprofit serving victims of domestic abuse, and an insurance company that later brought our team in for a larger software initiative. The core challenge was that many small businesses need custom software tailored to their exact workflows. I led frontend development and UX across these projects, usually using Vue/Nuxt with a Ruby on Rails API. The outcome was strong partner trust and practical software that helped clients grow with more confidence and less operational friction.',
-    details: [
-      'Built software for property assessment and inspection workflows.',
-      'Delivered manufacturing operations tooling for in-house process management for a print apparel company.',
-      'Helped nonprofits and small businesses with practical, maintainable software for a nonprofit serving victims of domestic abuse.',
-      'Acted as partner-level engineering lead across parallel projects.'
+      'Built a chat-history review app recognized at an internal data science conference.',
+      'Streamlined review and evaluation of ML model predictions.',
+      'Introduced Jest and ESLint to improve code quality.',
+      'Partnered with business and data science teams from design through delivery.'
     ],
     kind: 'core'
   },
   {
     slug: 'propelicy',
     name: 'Propelicy',
-    role: 'Senior Developer and Partner',
+    role: 'Senior Software Developer & Founder',
     years: 'Oct 2020–Aug 2021',
     location: 'United States · Remote',
     logo: '/logos/propelicy.svg',
     stack: ['Vue.js', 'Nuxt.js', 'Ruby on Rails', 'Rspec', 'JavaScript'],
     summary:
-      'Built a robust Insurance Application using Vue.js / Nuxt.js and a Rails API as lead frontend developer.',
+      'Built an insurance onboarding platform for agents and national carriers.',
     caseStudy:
-      'Propelicy was built to help insurance agents and agencies handle certification and registration for different policies in one place. The core problem was fragmentation: agents were juggling policy requirements and provider processes across disconnected systems. As cofounder and frontend lead, I owned the product experience for the central dashboard, focusing on clear workflow design and reliable day-to-day usability. I built the frontend on Vue/Nuxt with a Rails API backend and helped shape features that made policy onboarding easier to track. The result was a successful regional platform that supported growth through new policy types and additional insurance providers.',
+      'At Propelicy, I led frontend development for an insurance platform that streamlined agent onboarding for national carriers. I moved the frontend from Vue to Nuxt, built a reusable Storybook component library, and established unit and end-to-end testing.',
     details: [
-      'Led frontend implementation and responsive UX delivery.',
-      'Maintained high code quality standards across Vue/Nuxt codebases.',
-      'Worked day-to-day with Nuxt and Rails integration patterns.'
+      'Built onboarding flows for agents working with national carriers.',
+      'Migrated the frontend from Vue to Nuxt.',
+      'Created a Storybook design system and automated test coverage.'
+    ],
+    kind: 'core'
+  },
+  {
+    slug: 'benefitmany',
+    name: 'BenefitMany LLC',
+    role: 'Lead Frontend Engineer & Founder',
+    years: 'Oct 2017–Oct 2020',
+    location: 'Reno, Nevada, United States',
+    logo: '/logos/benefitmany.png',
+    stack: ['JavaScript', 'Ruby on Rails', 'Ruby', 'Vue.js', 'Nuxt.js'],
+    summary:
+      'Founded a consultancy delivering applications for small businesses and nonprofits.',
+    caseStudy:
+      'At BenefitMany, I led a remote team of eight delivering software for small businesses and nonprofits. We built MVPs and automated manual workflows for clients in domestic-violence support, apparel, and education, helping nonprofits focus more resources on their missions.',
+    details: [
+      'Founded a consultancy serving small businesses and nonprofits.',
+      'Built MVPs and automated manual client workflows.',
+      'Led a remote team of eight across delivery, planning, and stakeholder communication.'
     ],
     kind: 'core'
   },
