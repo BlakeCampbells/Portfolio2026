@@ -344,15 +344,16 @@ export const sideProjects: WorkItem[] = [
     location: 'Pittsburgh, Pennsylvania, United States',
     logo: '/logos/ai-plays-pokemon.png',
     siteUrl: 'https://aiplaypokemon.com',
-    stack: ['Python', 'PyBoy', 'Machine Learning'],
+    stack: ['Python', 'PyBoy', 'Recurrent PPO', 'Reinforcement Learning'],
     summary:
-      'Training my own machine-learning models in Python to play classic Pokémon games with PyBoy.',
+      'Training reinforcement learning agents for Pokémon Red and Crystal, with progress measured through verified gameplay milestones.',
     caseStudy:
-      'AI Plays Pokémon is an ongoing experiment in training my own machine-learning models to play classic Game Boy Pokémon games. I use Python to develop and train the models, and PyBoy to run the games and connect model decisions to gameplay.',
+      'AI Plays Pokémon trains separate recurrent PPO agents for Pokémon Red and Crystal. Each agent uses emulator screenshots and structured game state to choose actions, with feedback from verified story milestones, navigation, battles, catches, and team survival under Nuzlocke rules. I train across multiple emulator workers and all three starters, preserving model and optimizer checkpoints between runs. Frozen evaluations across every starter on fixed development seeds track verified progress, blackouts, and stalls; promising checkpoints face held-out tests against a fixed reference, with controller assistance reported separately.',
     details: [
-      'Develop and train custom machine-learning models in Python.',
-      'Use PyBoy to run the games and test model-driven gameplay.',
-      'Iterate on training as the models learn to play.'
+      'Train separate recurrent PPO agents for Red and Crystal using screenshots and structured game state.',
+      'Run multiple PyBoy workers across all three starters and preserve model and optimizer checkpoints.',
+      'Reward verified story progress, navigation, battles, catches, and Nuzlocke team survival.',
+      'Evaluate frozen checkpoints on fixed and held-out seeds, tracking gameplay results separately from training volume and controller assistance.'
     ],
     kind: 'side'
   },
@@ -360,13 +361,13 @@ export const sideProjects: WorkItem[] = [
     slug: 'manycomm',
     name: 'ManyComm',
     role: 'Primary Frontend Developer',
-    years: 'Project',
+    years: '2019–2021',
     location: 'Pittsburgh, Pennsylvania, United States',
     stack: ['Vue', 'WebSockets', 'Rails API'],
     summary:
       'Anonymous text and chat for people seeking help—born from a partnership with a local domestic abuse hotline.',
     caseStudy:
-      'ManyComm was built to give victims of domestic violence a truly anonymous way to connect with volunteers and local support. The challenge was delivering fast, human communication while protecting privacy at all costs. We designed chat and text workflows where sensitive records could be wiped to reduce legal exposure and help keep victims safe. I owned frontend implementation and focused on making high-stress interactions clear, trustworthy, and easy to use. The outcome was a safer support channel that helped people reach real assistance while prioritizing confidentiality.',
+      'ManyComm was built to give victims of domestic violence a truly anonymous way to connect with volunteers and local support. The challenge was delivering fast, human communication while protecting privacy at all costs. We designed chat and text workflows where sensitive records could be wiped to reduce legal exposure and help keep victims safe. I owned frontend implementation and focused on making high-stress interactions clear, trustworthy, and easy to use. The outcome was a safer support channel that helped people reach real assistance while prioritizing confidentiality. The project is now archived.',
     details: [
       'Product goal: private, anonymous support conversations for people in crisis.',
       'Vue frontend with WebSocket-backed sessions for real-time messaging.',
@@ -384,13 +385,13 @@ export const sideProjects: WorkItem[] = [
     location: 'United States',
     stack: ['Ruby', 'RubyGems'],
     summary:
-      "Ruby gem for Experian's data dictionary API and docs—built for open source users; 20,000+ downloads. Finished release, stable legacy.",
+      "A Ruby gem for Experian's data dictionary API with 20,000+ downloads on RubyGems.",
     caseStudy:
       "The Experian Data Dictionary project started at MortarStone after we received an Experian report and needed to programmatically write that data to a database for charting and analysis. To solve that workflow, I built a Ruby gem around Experian's data dictionary API so field mappings and value definitions were easier to integrate and maintain. Once it proved useful internally, we open sourced it so other teams and developers could use the same tooling. The outcome was a stable utility with practical documentation and long-tail community usage.",
     details: [
       "Focused on API and documentation workflows for anyone integrating against Experian's public data dictionary.",
       'Shipped with 100% test coverage and practical examples.',
-      'Marked complete years ago and left unchanged—a small, stable utility others can still rely on.',
+      'Completed years ago and no longer actively maintained.',
       '20,000+ downloads on RubyGems.'
     ],
     links: [

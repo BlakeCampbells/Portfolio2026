@@ -4,7 +4,7 @@ const { canonical, siteUrl } = usePortfolioSeo({
   path: '/',
   title: 'Blake Campbell | Senior Software Engineer',
   description:
-    'Blake Campbell is a senior software engineer in Pittsburgh building performant, reliable web products with React, Vue, Nuxt, TypeScript, and strong product execution.'
+    'Blake Campbell is a senior software engineer in Pittsburgh building reliable products across the stack, with an eye for clear interfaces and thoughtful user experiences.'
 })
 
 useHead({
@@ -23,7 +23,7 @@ useHead({
         image: `${siteUrl}/images/blake-headshot.jpg`,
         jobTitle: 'Senior Software Engineer',
         description:
-          'Senior software engineer focused on frontend systems, performance, reliability, and practical product delivery.',
+          'Senior software engineer building reliable products across the stack, with an eye for clear interfaces and thoughtful user experiences.',
         address: {
           '@type': 'PostalAddress',
           addressLocality: 'Pittsburgh',
