@@ -1,15 +1,15 @@
 import assert from 'node:assert/strict'
-import { readFile } from 'node:fs/promises'
+import { readFile, stat } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { coreWorkItems, sideProjects } from '../app/composables/siteContent.ts'
 
-// Run after build/generate: validate the HTML search engines actually receive.
+// Run after generate: validate the HTML and assets served by static hosting.
 const output = resolve(process.argv[2] || '.output/public')
 const origin = 'https://blakecampbell.com'
-const paths = ['/', '/about', '/work', '/uses', ...[...coreWorkItems, ...sideProjects].map(item => `/work/${item.slug}`)]
+const paths = ['/', '/about', '/work', '/uses', '/consulting', ...[...coreWorkItems, ...sideProjects].map(item => `/work/${item.slug}`)]
 const canonicalPath = path => path === '/' ? path : `${path}/`
 const read = path => readFile(resolve(output, path), 'utf8')
-const attributes = tag => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map(([, key, value]) => [key, value]))
+const attributes = tag => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map(([, key, value]) => [key, value.replaceAll('&amp;', '&')]))
 
 const sitemap = await read('sitemap.xml')
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url)
@@ -48,6 +48,19 @@ for (const path of paths) {
   assert.ok(meta('og:image')?.startsWith(`${origin}/`), `${path}: absolute social image`)
   assert.doesNotMatch(meta('robots') || '', /noindex|nofollow|none/i, `${path}: indexable robots meta`)
   assert.equal([...html.matchAll(/<h1\b/g)].length, 1, `${path}: one primary heading`)
+  // Static hosting must include every optimized variant advertised in the HTML.
+  // Missing srcset files can break images only on high-density devices.
+  const images = [...html.matchAll(/<img\b[^>]*>/g)].map(([tag]) => attributes(tag))
+  for (const img of images) {
+    assert.ok(Number(img.width) > 0 && Number(img.height) > 0, `${path}: image dimensions reserve layout space`)
+    const sources = [img.src, ...(img.srcset || '').split(', ').map(candidate => candidate.split(' ')[0])].filter(Boolean)
+    for (const src of sources.filter(src => src.startsWith('/'))) {
+      assert.ok((await stat(resolve(output, decodeURIComponent(src.slice(1))))).size > 0, `${path}: image variant exists: ${src}`)
+      if (!src.endsWith('.svg')) {
+        assert.ok(src.startsWith('/_ipx/'), `${path}: raster images use resized variants`)
+      }
+    }
+  }
   if (path === '/') {
     assert.match(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)?.[1] || '', /Blake Campbell/, 'Home: primary heading identifies the site owner')
   }
@@ -64,4 +77,4 @@ assert.match(robots, /User-agent: \*/i)
 assert.match(robots, /Allow: \/\s/i)
 assert.doesNotMatch(robots, /^Disallow:\s*\/\s*$/im)
 assert.match(robots, /Sitemap: https:\/\/blakecampbell\.com\/sitemap\.xml/)
-console.log(`SEO checks passed for ${paths.length} pages: sitemap, canonicals, metadata, structured data, and robots.txt.`)
+console.log(`SEO checks passed for ${paths.length} pages: sitemap, canonicals, metadata, structured data, robots.txt, and image variants.`)

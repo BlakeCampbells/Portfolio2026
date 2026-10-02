@@ -42,8 +42,8 @@ useHead({
 <template>
   <main class="mondrian-page">
     <section class="tile intro">
-      <h1>Work</h1>
-      <p>Selected projects and product work.</p>
+      <h1>Software engineering work</h1>
+      <p>Case studies in application modernization, data tools, product development, and open source.</p>
     </section>
 
     <section class="tile color blue" aria-hidden="true" />
@@ -74,7 +74,7 @@ useHead({
         <li v-for="item in sideProjects" :key="item.slug" class="row">
           <NuxtLink :to="`/work/${item.slug}/`" class="row-link">
             <div class="project-heading">
-              <img v-if="item.logo" :src="item.logo" alt="" class="project-icon" />
+              <PortfolioLogo v-if="item.logo" :src="item.logo" class="project-icon" />
               <h3>{{ item.name }}</h3>
             </div>
             <p class="role">{{ item.role }}</p>
