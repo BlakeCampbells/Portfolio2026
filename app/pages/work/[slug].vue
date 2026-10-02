@@ -9,12 +9,12 @@ if (!item.value) {
 
 const { canonical, siteUrl } = usePortfolioSeo({
   path: `/work/${item.value.slug}`,
-  title: item.value.seoTitle ?? `${item.value.name} | Blake Campbell Portfolio`,
-  description: `${item.value.summary} ${item.value.role} experience from Blake Campbell.`
-    .replace(/\s+/g, ' ')
-    .trim(),
+  title: item.value.seoTitle,
+  description: item.value.summary,
   type: 'article'
 })
+
+const relatedWork = computed(() => workItems.filter(work => item.value?.relatedSlugs.includes(work.slug)))
 
 const caseStudyParagraphs = computed(() => {
   const text = item.value?.caseStudy?.trim()
@@ -40,7 +40,7 @@ useHead({
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'WebPage',
-        name: `${item.value.name} | Blake Campbell`,
+        name: item.value.seoTitle,
         url: canonical,
         description: item.value.summary,
         mainEntity: {
@@ -75,8 +75,13 @@ useHead({
 <template>
   <main class="mondrian-page" v-if="item">
     <section class="tile intro">
+      <nav aria-label="Breadcrumb" class="breadcrumbs">
+        <NuxtLink to="/">Home</NuxtLink><span aria-hidden="true">/</span>
+        <NuxtLink to="/work/">Work</NuxtLink><span aria-hidden="true">/</span>
+        <span aria-current="page">{{ item.name }}</span>
+      </nav>
       <div class="intro-content" :class="{ 'has-logo': item.logo }">
-        <h1>{{ item.name }}</h1>
+        <h1>{{ item.heading }}</h1>
         <p class="role">{{ item.role }}</p>
         <p class="meta">{{ item.years }} · {{ item.location }}</p>
         <p>{{ item.summary }}</p>
@@ -104,10 +109,12 @@ useHead({
           </a>
         </p>
       </div>
-      <img
+      <PortfolioLogo
         v-if="item.logo"
         :src="item.logo"
         :alt="`${item.name} logo`"
+        :size="96"
+        loading="eager"
         class="company-logo"
       />
     </section>
@@ -124,7 +131,14 @@ useHead({
 
     <section class="tile color blue" aria-hidden="true" />
 
-    <section v-if="item.caseStudy" class="tile span-2">
+    <section v-if="item.caseStudySections" class="tile span-2">
+      <div v-for="section in item.caseStudySections" :key="section.heading" class="case-study-section">
+        <h2>{{ section.heading }}</h2>
+        <p v-for="paragraph in section.paragraphs" :key="paragraph" class="case-study">{{ paragraph }}</p>
+      </div>
+    </section>
+
+    <section v-else-if="item.caseStudy" class="tile span-2">
       <h2>The Work</h2>
       <p v-for="(paragraph, idx) in caseStudyParagraphs" :key="idx" class="case-study">
         {{ paragraph }}
@@ -135,11 +149,22 @@ useHead({
       </div>
     </section>
 
-    <section class="tile span-2">
+    <section v-if="!item.caseStudySections" class="tile span-2">
       <h2>What I Did</h2>
       <ul>
         <li v-for="point in item.details" :key="point">{{ point }}</li>
       </ul>
+    </section>
+
+    <section class="tile span-2" aria-labelledby="related-heading">
+      <h2 id="related-heading">Related engineering work</h2>
+      <ul class="related-work">
+        <li v-for="work in relatedWork" :key="work.slug">
+          <NuxtLink :to="`/work/${work.slug}/`">{{ work.heading }}</NuxtLink>
+          <p>{{ work.summary }}</p>
+        </li>
+      </ul>
+      <p class="consulting-link"><NuxtLink to="/consulting/">Have a similar challenge? Explore my software engineering consulting experience.</NuxtLink></p>
     </section>
   </main>
 </template>
@@ -161,6 +186,14 @@ useHead({
 .intro-content.has-logo {
   padding-right: clamp(5rem, 26vw, 7.5rem);
 }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: .5rem; font-size: .85rem; margin-bottom: 1.1rem; }
+.breadcrumbs a, .related-work a { text-decoration: underline; text-underline-offset: 3px; }
+.related-work { display: grid; gap: 1rem; }
+.related-work a { display: inline-block; font-weight: 700; }
+.related-work p { margin: .3rem 0 0; }
+.case-study-section + .case-study-section { margin-top: 1.8rem; }
+.consulting-link { margin-top: 1.4rem; line-height: 1.5; }
+.consulting-link a { text-decoration: underline; text-underline-offset: 3px; font-weight: 700; }
 .span-2 { grid-column: 2 / 4; }
 .color.yellow { background: #f3c623; }
 .color.red { background: #d72d2d; }
@@ -192,10 +225,8 @@ ul { margin: 0; padding-left: 1rem; line-height: 1.6; }
   bottom: 1.1rem;
   right: 1.1rem;
   display: block;
-  max-height: 100px;
-  width: auto;
-  max-width: min(120px, 32vw);
-  height: auto;
+  width: 96px;
+  height: 96px;
   object-fit: contain;
   border-radius: 0;
   border: none;
@@ -207,5 +238,7 @@ h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: .04em; }
 @media (max-width: 900px) {
   .mondrian-page { grid-template-columns: 1fr; }
   .intro,.span-2 { grid-column: auto; }
+  .intro-content.has-logo { padding-right: 0; }
+  .company-logo { position: static; margin-top: 1rem; }
 }
 </style>

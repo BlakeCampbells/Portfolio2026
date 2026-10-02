@@ -77,13 +77,25 @@ useHead({
 <template>
   <main class="mondrian">
     <section class="tile intro">
-      <img :src="about.headshot" alt="Headshot of Blake Campbell" class="headshot" />
+      <NuxtImg
+        :src="about.headshot"
+        alt="Headshot of Blake Campbell"
+        class="headshot"
+        width="156"
+        height="156"
+        format="webp"
+        quality="80"
+        densities="x1 x2"
+        fetchpriority="high"
+        preload
+      />
       <p class="eyebrow">Pittsburgh, PA</p>
       <h1>Blake Campbell <span>Senior Software Engineer</span></h1>
       <p>
         I build reliable products across the stack, with an eye for clear interfaces and
         thoughtful user experiences.
       </p>
+      <NuxtLink to="/consulting/" class="consulting-link">Software engineering consulting</NuxtLink>
     </section>
 
     <section class="tile red" aria-hidden="true" />
@@ -91,10 +103,10 @@ useHead({
     <section class="tile about">
       <h2>Proof Points</h2>
       <ul class="proof-points">
-        <li>Modernizing nuclear-waste monitoring software at Argonne National Laboratory</li>
-        <li>Built tools to classify millions of Apple chatbot conversations</li>
-        <li>Led a remote team of eight at BenefitMany</li>
-        <li>Maintain uses.tech, an open-source project with 1,000+ individual contributors</li>
+        <li><NuxtLink to="/work/argonne-national-laboratory/">Modernizing nuclear-waste monitoring software at Argonne National Laboratory</NuxtLink></li>
+        <li><NuxtLink to="/work/apple/">Built tools to classify millions of Apple chatbot conversations</NuxtLink></li>
+        <li><NuxtLink to="/work/benefitmany/">Led a remote team of eight at BenefitMany</NuxtLink></li>
+        <li><NuxtLink to="/work/uses-tech/">Maintain uses.tech, an open-source project with 1,000+ individual contributors</NuxtLink></li>
       </ul>
     </section>
 
@@ -121,7 +133,7 @@ useHead({
         <li v-for="project in sideProjects" :key="project.slug">
           <NuxtLink :to="`/work/${project.slug}/`" class="item-link">
             <span class="project-title">
-              <img v-if="project.logo" :src="project.logo" alt="" class="project-icon" />
+              <PortfolioLogo v-if="project.logo" :src="project.logo" class="project-icon" />
               <strong>{{ project.name }}</strong>
             </span>
             <small class="years">{{ project.years }}</small>
@@ -227,6 +239,7 @@ ul { margin: 0; padding-left: 1rem; }
 .work span, .projects span { font-size: 0.92rem; }
 .proof-points { display: grid; gap: 0.55rem; }
 .proof-points li { line-height: 1.35; }
+.proof-points a { text-decoration: underline; text-underline-offset: 3px; }
 .about-me-list li {
   padding: 0.55rem 0.6rem;
   font-size: 0.92rem;
@@ -245,6 +258,7 @@ ul { margin: 0; padding-left: 1rem; }
   margin-bottom: 1rem;
 }
 .eyebrow { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; margin: 0; }
+.consulting-link { margin-top: 1rem; text-decoration: underline; text-underline-offset: 3px; font-weight: 700; }
 h1 { margin: 0.5rem 0 0.75rem; font-size: clamp(1.7rem, 4.8vw, 3.8rem); line-height: 0.95; }
 h1 span { display: block; margin-top: .35rem; font-size: .65em; line-height: 1.1; }
 p { margin: 0; }

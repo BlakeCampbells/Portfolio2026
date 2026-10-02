@@ -38,7 +38,16 @@ useHead({
 <template>
   <main class="mondrian-page">
     <section class="tile intro">
-      <img :src="about.headshot" alt="Headshot of Blake Campbell" class="headshot" />
+      <NuxtImg
+        :src="about.headshot"
+        alt="Headshot of Blake Campbell"
+        class="headshot"
+        width="104"
+        height="104"
+        format="webp"
+        quality="80"
+        densities="x1 x2"
+      />
       <h1>{{ about.headline }}</h1>
       <p class="lead">{{ about.bio }}</p>
       <p class="location">Pittsburgh, PA</p>
@@ -60,6 +69,7 @@ useHead({
       <ul>
         <li v-for="item in about.approach" :key="item">{{ item }}</li>
       </ul>
+      <p class="consulting-link"><NuxtLink to="/consulting/">Explore my software engineering consulting experience</NuxtLink></p>
     </section>
 
     <section class="tile color yellow" aria-hidden="true" />
@@ -116,6 +126,8 @@ ul { margin: 0; padding-left: 1rem; line-height: 1.45; }
   margin-bottom: 0.6rem;
 }
 .lead { font-size: 0.98rem; line-height: 1.4; }
+.consulting-link { line-height: 1.45; }
+.consulting-link a { text-decoration: underline; text-underline-offset: 3px; font-weight: 700; }
 .location {
   margin-top: 0.65rem;
   justify-self: end;
