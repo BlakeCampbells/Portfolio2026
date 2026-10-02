@@ -60,6 +60,7 @@ export default defineNuxtConfig({
       '/about/',
       '/work/',
       '/uses/',
+      '/consulting/',
       ...[...coreWorkItems, ...sideProjects].map(item => `/work/${item.slug}/`)
     ]
   },
@@ -80,6 +81,7 @@ export default defineNuxtConfig({
         '/about/',
         '/work/',
         '/uses/',
+        '/consulting/',
         ...[...coreWorkItems, ...sideProjects].map(item => `/work/${item.slug}/`),
         '/sitemap.xml',
         '/robots.txt'
