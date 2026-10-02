@@ -2,13 +2,16 @@ export type WorkItem = {
   slug: string
   name: string
   role: string
-  seoTitle?: string
+  seoTitle: string
+  heading: string
+  relatedSlugs: string[]
   years: string
   location: string
   logo?: string
   stack: string[]
   summary: string
   caseStudy?: string
+  caseStudySections?: { heading: string; paragraphs: string[] }[]
   decisionAndResult?: { decision: string; result: string }
   details: string[]
   kind: 'core' | 'side'
@@ -135,14 +138,38 @@ export const coreWorkItems: WorkItem[] = [
   {
     slug: 'argonne-national-laboratory',
     name: 'Argonne National Laboratory',
+    seoTitle: 'Legacy Application Modernization at Argonne | Blake Campbell',
+    heading: 'Argonne: Modernizing legacy applications',
+    relatedSlugs: ['mortarstone', 'apple'],
     role: 'Senior Full Stack Engineer',
     years: 'Aug 2024–Present',
     location: 'Lemont, Illinois, United States · Remote',
     logo: '/logos/argonne.svg',
     stack: ['React.js', 'TypeScript', 'Ruby on Rails', 'Playwright'],
     summary: 'Updating legacy applications and raising test coverage to at least 80% before deployment.',
-    caseStudy:
-      'At Argonne, I work on 5+ legacy applications, including a nuclear-waste monitoring system. We added test pipelines that check each application against an 80% coverage requirement before deployment, and I brought Playwright into end-to-end testing. I also helped build React components shared across internal apps and run demos on Copilot, Claude, and OpenAI for other developers.',
+    caseStudySections: [
+      {
+        heading: 'The problem: Modernizing existing software',
+        paragraphs: [
+          'At Argonne National Laboratory, I work across five or more legacy applications, including a nuclear-waste monitoring system. The work combines application updates, shared React components, and improvements to how the team tests software before deployment.',
+          'These applications started with little test coverage. Alongside updating their functionality, we needed a consistent way to check each application before it shipped.'
+        ]
+      },
+      {
+        heading: 'The approach: Test each application before release',
+        paragraphs: [
+          'We added test pipelines with an 80% coverage requirement for each application before deployment. The decision was to check applications separately, making the release requirement explicit for each one.',
+          'I introduced Playwright for end-to-end testing of legacy workflows and helped build React components shared across internal applications. My stack for this work includes React, TypeScript, Ruby on Rails, and Playwright.'
+        ]
+      },
+      {
+        heading: 'The outcome: A repeatable deployment requirement',
+        paragraphs: [
+          'Legacy applications that began with little test coverage now meet the 80% threshold for deployment. The work also includes reusable interface components and end-to-end checks of existing workflows.',
+          'Beyond application development, I run demos and Q&A sessions on Copilot, Claude, and OpenAI for other developers.'
+        ]
+      }
+    ],
     decisionAndResult: {
       decision: 'Check coverage separately for each application before it ships.',
       result: 'Legacy apps that started with little test coverage now meet the 80% threshold for deployment.'
@@ -159,6 +186,9 @@ export const coreWorkItems: WorkItem[] = [
   {
     slug: 'apple',
     name: 'Apple',
+    seoTitle: 'Apple Chatbot Analytics Engineering | Blake Campbell',
+    heading: 'Apple: Chatbot analytics and review tools',
+    relatedSlugs: ['argonne-national-laboratory', 'ai-plays-pokemon'],
     role: 'Senior Full Stack Engineer',
     years: 'Oct 2021–Sep 2024',
     location: 'Cupertino, California, United States · Remote',
@@ -166,8 +196,29 @@ export const coreWorkItems: WorkItem[] = [
     stack: ['Vue.js', 'Node.js', 'TypeScript', 'Jest'],
     summary:
       'Built tools to explore and classify millions of chatbot conversations from 26 locales and 7 languages.',
-    caseStudy:
-      'Apple’s chatbot teams had collected millions of conversations from 26 locales in 7 languages. I built tools that let them explore that data and classify utterances through both automation and human review. One chat-history app was selected among the top 10 of 150 submissions at an internal data science conference. I also built a tool for reviewing model predictions and added Jest and ESLint to the development workflow.',
+    caseStudySections: [
+      {
+        heading: 'The problem: Understanding millions of conversations',
+        paragraphs: [
+          'Apple’s chatbot teams had collected millions of conversations across 26 locales and seven languages. They needed tools to explore chat histories and classify the individual utterances within those conversations.',
+          'I worked with business and data science teams from design through delivery, building interfaces for the people reviewing this data.'
+        ]
+      },
+      {
+        heading: 'The approach: Combine automation with human review',
+        paragraphs: [
+          'I built a chat-history application and classification workflows that supported both automation and human review. The work gave teams a way to inspect conversations as well as review their classifications.',
+          'I also built a separate tool for reviewing model predictions. The engineering stack included Vue, Node.js, and TypeScript, and I introduced Jest and ESLint into the development workflow while following Apple’s design, security, and engineering standards.'
+        ]
+      },
+      {
+        heading: 'The outcome: Tools used across locales and languages',
+        paragraphs: [
+          'Teams worldwide could explore and classify conversations from 26 locales in seven languages. The chat-history application was selected among the top 10 of 150 submissions at an internal data science conference.',
+          'My contribution spanned the review interfaces, classification workflows, model-prediction review tool, and development practices behind their delivery.'
+        ]
+      }
+    ],
     decisionAndResult: {
       decision: 'Give teams a way to inspect conversations and review both automated and human classifications.',
       result: 'Teams worldwide could review and classify conversations from 26 locales in 7 languages.'
@@ -186,6 +237,8 @@ export const coreWorkItems: WorkItem[] = [
     slug: 'propelicy',
     name: 'Propelicy',
     seoTitle: 'Propelicy Insurance Certification Software | Blake Campbell',
+    heading: 'Propelicy: Insurance certification software',
+    relatedSlugs: ['benefitmany', 'awardwentto'],
     role: 'Senior Software Developer & Founder',
     years: 'Oct 2020–Aug 2021',
     location: 'United States · Remote',
@@ -210,6 +263,9 @@ export const coreWorkItems: WorkItem[] = [
   {
     slug: 'benefitmany',
     name: 'BenefitMany',
+    seoTitle: 'BenefitMany Custom Software & MVP Development | Blake Campbell',
+    heading: 'BenefitMany: Custom software for businesses and nonprofits',
+    relatedSlugs: ['propelicy', 'manycomm'],
     role: 'Lead Frontend Engineer & Founder',
     years: 'Oct 2017–Oct 2020',
     location: 'Reno, Nevada, United States',
@@ -217,8 +273,29 @@ export const coreWorkItems: WorkItem[] = [
     stack: ['JavaScript', 'Ruby on Rails', 'Ruby', 'Vue.js', 'Nuxt.js'],
     summary:
       'Built internal tools and customer-facing apps for small businesses and nonprofits.',
-    caseStudy:
-      'I co-founded BenefitMany to build software for small businesses and nonprofits. One apparel client needed to keep up with growing work orders across multiple shifts, so we built a work-order system for them. We also built MVPs and replaced manual processes for clients in domestic-violence support and education. I led a remote team of eight and worked directly with clients on planning and delivery.',
+    caseStudySections: [
+      {
+        heading: 'The problem: Software shaped around daily operations',
+        paragraphs: [
+          'I co-founded BenefitMany to build internal tools and customer-facing applications for small businesses and nonprofits. I worked directly with clients to understand their requirements, set priorities, and plan delivery.',
+          'One apparel client needed to keep up with growing work orders across multiple shifts. Other clients worked in domestic-violence support and education, where our projects included MVPs and replacing manual processes.'
+        ]
+      },
+      {
+        heading: 'The approach: Connect client priorities to delivery',
+        paragraphs: [
+          'For the apparel business, we built a work-order system around the work the client needed to manage each day. That operational problem gave the project a concrete focus: supporting orders across shifts.',
+          'As lead frontend engineer and co-founder, I led a remote team of eight through planning, development, and delivery. My work combined client conversations and technical leadership with frontend development using Vue, Nuxt, and JavaScript alongside Ruby on Rails.'
+        ]
+      },
+      {
+        heading: 'The outcome: Tools for the work clients needed to manage',
+        paragraphs: [
+          'The apparel client could handle more work orders across multiple shifts. Across the consultancy, we delivered MVPs and applications that replaced manual steps for small businesses and nonprofit clients.',
+          'This work brought product planning, interface development, and team leadership together, with direct involvement in both client requirements and implementation.'
+        ]
+      }
+    ],
     decisionAndResult: {
       decision: 'Build around the work each client needed to manage every day.',
       result: 'The apparel client could handle more work orders across multiple shifts.'
@@ -236,6 +313,8 @@ export const coreWorkItems: WorkItem[] = [
     slug: 'mortarstone',
     name: 'MortarStone',
     seoTitle: 'MortarStone Donor Analytics Software | Blake Campbell',
+    heading: 'MortarStone: Donor analytics and reporting software',
+    relatedSlugs: ['argonne-national-laboratory', 'experian-data-dictionary'],
     role: 'Full Stack Developer',
     years: 'Sep 2014–Dec 2017',
     location: 'Reno, Nevada, United States',
@@ -262,6 +341,9 @@ export const sideProjects: WorkItem[] = [
   {
     slug: 'uses-tech',
     name: 'uses.tech',
+    seoTitle: 'uses.tech Open Source Maintenance | Blake Campbell',
+    heading: 'uses.tech: Maintaining an open-source developer directory',
+    relatedSlugs: ['experian-data-dictionary', 'awardwentto'],
     role: 'Core Maintainer',
     years: '2021–Present',
     location: 'Pittsburgh, Pennsylvania, United States',
@@ -292,6 +374,9 @@ export const sideProjects: WorkItem[] = [
   {
     slug: 'awardwentto',
     name: 'Award Went To',
+    seoTitle: 'Award Went To: Nuxt Data Visualization | Blake Campbell',
+    heading: 'Award Went To: Interactive Academy Awards data',
+    relatedSlugs: ['propelicy', 'snapremark-ios-application'],
     role: 'Creator',
     years: '2025–Present',
     location: 'Pittsburgh, Pennsylvania, United States',
@@ -313,6 +398,9 @@ export const sideProjects: WorkItem[] = [
   {
     slug: 'snapremark-ios-application',
     name: 'SnapRemark',
+    seoTitle: 'SnapRemark: Swift iOS Game Development | Blake Campbell',
+    heading: 'SnapRemark: Building and shipping a Swift iOS game',
+    relatedSlugs: ['awardwentto', 'ai-plays-pokemon'],
     role: 'Creator',
     years: '2024–Present',
     location: 'Pittsburgh, Pennsylvania, United States',
@@ -339,6 +427,9 @@ export const sideProjects: WorkItem[] = [
   {
     slug: 'ai-plays-pokemon',
     name: 'AI Plays Pokémon',
+    seoTitle: 'AI Plays Pokémon: Reinforcement Learning | Blake Campbell',
+    heading: 'AI Plays Pokémon: Training and evaluating game-playing agents',
+    relatedSlugs: ['apple', 'snapremark-ios-application'],
     role: 'Creator',
     years: 'Jul 2026–Present',
     location: 'Pittsburgh, Pennsylvania, United States',
@@ -360,6 +451,9 @@ export const sideProjects: WorkItem[] = [
   {
     slug: 'manycomm',
     name: 'ManyComm',
+    seoTitle: 'ManyComm: Vue & WebSocket Support Chat | Blake Campbell',
+    heading: 'ManyComm: Anonymous support chat with Vue and WebSockets',
+    relatedSlugs: ['benefitmany', 'propelicy'],
     role: 'Primary Frontend Developer',
     years: '2019–2021',
     location: 'Pittsburgh, Pennsylvania, United States',
@@ -380,6 +474,8 @@ export const sideProjects: WorkItem[] = [
     slug: 'experian-data-dictionary',
     name: 'Experian Data Dictionary',
     seoTitle: 'Experian Data Dictionary Ruby Gem | Blake Campbell',
+    heading: 'Experian Data Dictionary: An open-source Ruby integration',
+    relatedSlugs: ['mortarstone', 'uses-tech'],
     role: 'Open Source Project',
     years: '2015',
     location: 'United States',
