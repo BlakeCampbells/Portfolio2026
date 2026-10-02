@@ -20,9 +20,15 @@ The TypeScript checker uses TypeScript 6.0.x: vue-tsc 3.3.11 cannot load TypeScr
 
 ## Sitemap and Search Console
 
-The canonical origin is `https://blakecampbell.com`. Page URLs use trailing slashes; internal links, canonical tags, Open Graph URLs, and sitemap entries agree with the URLs served by the static host. The sitemap contains the four main pages and all eleven work/project pages. `/works` redirects to `/work/`.
+The canonical origin is `https://blakecampbell.com`. Page URLs use trailing slashes; internal links, canonical tags, Open Graph URLs, and sitemap entries agree with the URLs served by the static host. The sitemap contains five main pages (including `/consulting/`) and all eleven work/project pages. `/works` redirects to `/work/`.
 
-`npm run check:seo` checks actual generated output for route coverage, duplicate sitemap entries, canonical and Open Graph URLs, internal page links, titles/descriptions, language, robots metadata, structured-data JSON, and robots.txt. Run it after `build` or `generate`; it does not query Google or verify hosting configuration.
+`npm run check:seo` checks actual generated output for route coverage, duplicate sitemap entries, canonical and Open Graph URLs, internal page links, titles/descriptions, language, robots metadata, structured-data JSON, robots.txt, and the existence of rendered image variants. Run it after `generate` for static deployment; it does not query Google or verify hosting configuration.
+
+Project titles, descriptive headings, related project slugs, and case-study sections live in `app/composables/siteContent.ts`. The Argonne, Apple, and BenefitMany pages use structured case-study sections; the other projects retain their narrative and highlights. Related work links and homepage proof points connect visitors to the relevant case studies. `/consulting/` describes engineering capabilities backed by those projects and uses the existing LinkedIn profile for inquiries.
+
+Headshots and raster logos use Nuxt Image with explicit dimensions and 1x/2x WebP variants; SVG logos stay as vectors. Static generation writes the optimized assets into `.output/public/_ipx/`. Deploy the entire generated directory so `srcset` variants are available on high-density screens. The original headshot URL remains available for social previews and structured data.
+
+After publishing the content changes, compare Search Console queries and landing pages over equal date ranges. Track name searches separately from engineering/service searches, along with actual inquiries. New technical articles should add firsthand implementation details beyond the case studies; write those from project notes and examples rather than inventing metrics or duplicating the existing summaries.
 
 Automatic `lastmod` values are disabled because build timestamps do not represent meaningful changes to content. Add dates only when actual content modification dates are tracked. See [Google's sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap#additional-notes-about-xml-sitemaps).
 
