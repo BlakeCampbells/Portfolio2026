@@ -4,7 +4,7 @@ Nuxt 4 portfolio with prerendered pages, Nuxt Image, XML sitemap, and robots.txt
 
 ## Development and builds
 
-Use Node 24 LTS (`nvm use`, then `npm ci`). Nuxt 4.5 requires Node `^22.19.0 || ^24.11.0 || >=26.0.0`; configure the deployment build environment accordingly. Commit `package-lock.json` with dependency updates.
+Use Node 24 LTS, version 24.15.0 or newer (`nvm install`, `nvm use`, then `npm ci`). Nuxt 4.6, Sitemap 9, and Robots 7 require Node `^22.22.3 || ^24.15.0 || >=26.0.0`; configure the deployment build environment accordingly. Commit `package-lock.json` with dependency updates.
 
 ```bash
 npm ci
@@ -16,7 +16,9 @@ npm run check:seo  # validate generated pages, sitemap, and robots.txt
 
 For a Node server deployment, run `npm run build`, then `npm run preview` (or `node .output/server/index.mjs`). Build on the deployment platform, since image processing includes platform-specific native binaries.
 
-The TypeScript checker uses TypeScript 6.0.x: vue-tsc 3.3.11 cannot load TypeScript 7's changed package exports. Recheck compatibility before upgrading that major version.
+The TypeScript checker uses TypeScript 6.0.x: vue-tsc 3.3.13 cannot load TypeScript 7's changed package exports. Recheck compatibility before upgrading that major version. The `nuxtseo-devtools-host` development dependency preserves the Sitemap and Robots panels after their major upgrades.
+
+The October 22, 2026 dependency audit reports 19 findings (18 high, one low), down from 24 in the previous lockfile (including three critical). These totals include affected parent packages. The remaining underlying advisories are [braces stack exhaustion](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm) and [node-forge signature verification](https://github.com/advisories/GHSA-86w9-cpqp-85rv), both already present and without a patched release, plus a [Windows esbuild development-server issue](https://github.com/advisories/GHSA-g7r4-m6w7-qqqr) in the SEO DevTools dependency tree. The latter requires esbuild's `serve` API with `servedir` and does not affect generated static assets. Recheck upstream fixes during maintenance; avoid `npm audit fix --force`, which currently proposes framework downgrades. Functional checks passing does not mean the dependency audit is clean.
 
 ## Sitemap and Search Console
 

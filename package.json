@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "engines": {
-    "node": "^22.19.0 || ^24.11.0 || >=26.0.0"
+    "node": "^22.22.3 || ^24.15.0 || >=26.0.0"
   },
   "scripts": {
     "build": "nuxt build",
@@ -15,15 +15,16 @@
     "typecheck": "nuxt typecheck"
   },
   "dependencies": {
-    "@nuxt/image": "^2.1.0",
-    "@nuxtjs/robots": "^6.2.0",
-    "@nuxtjs/sitemap": "^8.5.0",
-    "nuxt": "^4.5.2",
-    "vue": "^3.5.42",
-    "vue-router": "^5.3.1"
+    "@nuxt/image": "^2.2.0",
+    "@nuxtjs/robots": "^7.0.2",
+    "@nuxtjs/sitemap": "^9.1.0",
+    "nuxt": "^4.6.2",
+    "vue": "^3.5.44",
+    "vue-router": "^5.4.0"
   },
   "devDependencies": {
+    "nuxtseo-devtools-host": "^1.0.2",
     "typescript": "~6.0.3",
-    "vue-tsc": "^3.3.11"
+    "vue-tsc": "^3.3.13"
   }
 }
